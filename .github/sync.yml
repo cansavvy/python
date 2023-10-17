@@ -1,0 +1,49 @@
+# Candace Savonen Aug 2021
+# For info on how to update this file see: https://github.com/marketplace/actions/repo-file-sync-action#%EF%B8%8F-sync-configuration
+
+group:
+  - files:
+      - source: .github/workflows/
+        dest: .github/workflows/
+        deleteOrphaned: true
+        exclude: |
+          send-updates.yml
+          test-send-updates.yml
+          starting-course.yml
+      - source: scripts/
+        dest: scripts/
+        deleteOrphaned: true
+      - source: assets/
+        dest: assets/
+        deleteOrphaned: true
+      - source: index.Rmd
+        dest: index.Rmd
+      - source: About.Rmd
+        dest: About.Rmd
+      - source: config_automation.yml
+        dest: config_automation.yml
+      - source: _output.yml
+        dest: _output.yml
+      - source: .github/ISSUE_TEMPLATE/course-problem-report.md
+        dest: .github/ISSUE_TEMPLATE/course-problem-report.md
+      - source: .github/ISSUE_TEMPLATE/course-content-add.md
+        dest: .github/ISSUE_TEMPLATE/course-content-add.md
+      - source: scripts/git_repo_check.R
+        dest: scripts/git_repo_check.R
+  # Repositories to receive changes
+    repos: |
+      datatrail-jhu/DataTrail
+      datatrail-jhu/00_intro
+      datatrail-jhu/01_chromebookintro
+      datatrail-jhu/02_googlecloud
+      datatrail-jhu/03_fileorganization
+      datatrail-jhu/04_githubbasics
+      datatrail-jhu/05_R
+      datatrail-jhu/06_datacleaning
+      datatrail-jhu/07_dataviz
+      datatrail-jhu/08_data
+      datatrail-jhu/09_dataanalysis
+      datatrail-jhu/10_dsjob
+      datatrail-jhu/11_dataproducts
+      datatrail-jhu/12_package
+###ADD NEW REPO HERE following the format above#
