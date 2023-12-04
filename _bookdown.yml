@@ -1,9 +1,16 @@
-book_filename: "DataTrail"
+book_filename: "DataTrail - Python"
 chapter_name: "Chapter "
-repo: https://github.com/jhudsl/OTTR_Template/
+repo: https://github.com/datatrail-jhu/python
 rmd_files: ["index.Rmd",
             "01-intro.Rmd",
-            "02-chapter_of_course.Rmd",
+            "02-set-up.Rmd",
+            "03-intro-to-python.Rmd",
+            "04-getting-data.Rmd",
+            "05-cleaning-data.Rmd",
+            "06-plotting-data.Rmd",
+            "07-getting-stats.Rmd",
+            "08-sharing-results.Rmd",
+            "09-more-python.Rmd",
             "About.Rmd",
             "References.Rmd"]
 new_session: yes
