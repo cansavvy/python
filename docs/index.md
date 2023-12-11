@@ -1,6 +1,6 @@
 ---
-title: " Course Name "
-date: "October, 2022"
+title: " DataTrail - Python "
+date: "December, 2023"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: book.bib
