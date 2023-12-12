@@ -1,6 +1,4 @@
-
-# Intro to Python
-
+# Scripting in Python
 
 ## Learning Objectives
 
