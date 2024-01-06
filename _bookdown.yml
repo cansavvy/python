@@ -9,7 +9,7 @@ rmd_files: ["index.Rmd",
             "05-cleaning-data.Rmd",
             "06-plotting-data.Rmd",
             "07-getting-stats.Rmd",
-            "08-sharing-results.Rmd",
+            "08-scripting-python.Rmd",
             "09-more-python.Rmd",
             "About.Rmd",
             "References.Rmd"]

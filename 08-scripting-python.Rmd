@@ -1,4 +1,4 @@
-# Set up
+# Scripting in Python
 
 ## Learning Objectives
 
