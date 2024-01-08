@@ -1,4 +1,7 @@
 # ignore nonsense files
+.ipynb_checkpoints
+*.ipynb.html
+*.ipynb
 .DS_Store
 .Rhistory
 .local
