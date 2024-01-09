@@ -7,3 +7,57 @@
 ```{r, fig.align='center', echo = FALSE, fig.alt= "Major point!! example image"}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1k8uC1rqnGTSbKjBsWvKYgiUUxO1q_VhJCwZQHJNWozA/edit#slide=id.g29054a882fd_0_52")
 ```
+
+The main difference between Python and R is that Python is a general-purpose programming language, while R is a statistical programming language. This means that Python is good at multiple things and can do most things, whereas R is very good at statistical analysis, but not as good at other things as Python.
+
+Python is supported by multiple libraries that support data science tasks:
+
+- NumPy for numerical computing with multidimensional arrays
+- pandas for data manipulation and analysis with data frames
+- Matplotlib for data visualization
+
+Python is particularly suited for large scale machine learning.
+
+When you want to document your code, you can use Jupyter Notebooks. Jupyter Notebooks are an open source web application for easily sharing documents that contain your live Python code, equations, visualizations and data science explanations. 
+
+
+
+## Python Syntax for R Users
+
+Source: https://rstudio.github.io/reticulate/articles/python_primer.html
+
+### Whitespace
+
+
+### Lists
+
+
+### Tuples
+
+
+### Dictionaries
+
+
+### Sets 
+
+### Iteration with for loops
+
+### Comprehensions
+
+### Functions
+
+### Classes
+
+
+### Importing modules
+
+### Integers and Floats
+
+
+### Learning More
+
+https://docs.Python.org/3/
+
+https://docs.Python.org/3/library/index.html
+
+
