@@ -69,6 +69,14 @@ relig_income = pd.read_csv(url)
 relig_income.head()
 ```
 
+|    | religion           |   <\$10k |   \$10-20k |   \$20-30k |   \$30-40k |   \$40-50k |   \$50-75k |   \$75-100k |   \$100-150k |   >150k |   Don't know/refused |
+|---:|:-------------------|--------:|----------:|----------:|----------:|----------:|----------:|-----------:|------------:|--------:|---------------------:|
+|  0 | Agnostic           |      27 |        34 |        60 |        81 |        76 |       137 |        122 |         109 |      84 |                   96 |
+|  1 | Atheist            |      12 |        27 |        37 |        52 |        35 |        70 |         73 |          59 |      74 |                   76 |
+|  2 | Buddhist           |      27 |        21 |        30 |        34 |        33 |        58 |         62 |          39 |      53 |                   54 |
+|  3 | Catholic           |     418 |       617 |       732 |       670 |       638 |      1116 |        949 |         792 |     633 |                 1489 |
+|  4 | Don’t know/refused |      15 |        14 |        15 |        11 |        10 |        35 |         21 |          17 |      18 |                  116 |
+
 Again, wide data are easy to decipher at a glance. We can see that we have different income levels but in reality, many of those columns contain the same variable (income) so these data are not tidy.
 
 There are two methods to help you reshape your data.
@@ -85,6 +93,14 @@ long_df = relig_income.melt(id_vars="religion", var_name="income", value_name="c
 long_df.head()
 ```
 
+|    | religion           | income   |   count |
+|---:|:-------------------|:---------|--------:|
+|  0 | Agnostic           | <\$10k   |      27 |
+|  1 | Atheist            | <\$10k   |      12 |
+|  2 | Buddhist           | <\$10k   |      27 |
+|  3 | Catholic           | <\$10k   |     418 |
+|  4 | Don’t know/refused | <\$10k   |      15 |
+
 We set the argument `id_var` to `religion` which tells pandas that the `religion` variable identifies each observation and should not be included in the transformation from wide to long.
 
 
@@ -99,6 +115,15 @@ wide_df = long_df.pivot(columns="income", index="religion")
 wide_df.head()
 ```
 
+| religion           |   ('count', '\$10-20k') |   ('count', '\$100-150k') |   ('count', '\$20-30k') |   ('count', '\$30-40k') |   ('count', '\$40-50k') |   ('count', '\$50-75k') |   ('count', '\$75-100k') |   ('count', '<\$10k') |   ('count', '>150k') |   ('count', "Don't know/refused") |
+|:-------------------|-----------------------:|-------------------------:|-----------------------:|-----------------------:|-----------------------:|-----------------------:|------------------------:|---------------------:|---------------------:|----------------------------------:|
+| Agnostic           |                     34 |                      109 |                     60 |                     81 |                     76 |                    137 |                     122 |                   27 |                   84 |                                96 |
+| Atheist            |                     27 |                       59 |                     37 |                     52 |                     35 |                     70 |                      73 |                   12 |                   74 |                                76 |
+| Buddhist           |                     21 |                       39 |                     30 |                     34 |                     33 |                     58 |                      62 |                   27 |                   53 |                                54 |
+| Catholic           |                    617 |                      792 |                    732 |                    670 |                    638 |                   1116 |                     949 |                  418 |                  633 |                              1489 |
+| Don’t know/refused |                     14 |                       17 |                     15 |                     11 |                     10 |                     35 |                      21 |                   15 |                   18 |                               116 |
+
+
 ## Transposing data
 
 You may find you need your rows to be columns and your columns to be rows. In other words, you need to transpose your data frame. You can do this by using the [`.T`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.T.html) property of the dataframe or the [`transpose`](https://pandas.pydata.org/docs/reference/api/pandas.transpose.html) method. Let's have a look at our `relig_income` dataset again.
@@ -109,6 +134,14 @@ transposed = relig_income.T
 # Take a look at the transposed data.
 transposed.head()
 ```
+
+|          | 0        | 1       | 2        | 3        | 4                  | 5                | 6     | 7                       | 8                 | 9      | 10            | 11     | 12     | 13       | 14              | 15           | 16                    | 17           |
+|:---------|:---------|:--------|:---------|:---------|:-------------------|:-----------------|:------|:------------------------|:------------------|:-------|:--------------|:-------|:-------|:---------|:----------------|:-------------|:----------------------|:-------------|
+| religion | Agnostic | Atheist | Buddhist | Catholic | Don’t know/refused | Evangelical Prot | Hindu | Historically Black Prot | Jehovah's Witness | Jewish | Mainline Prot | Mormon | Muslim | Orthodox | Other Christian | Other Faiths | Other World Religions | Unaffiliated |
+| <\$10k    | 27       | 12      | 27       | 418      | 15                 | 575              | 1     | 228                     | 20                | 19     | 289           | 29     | 6      | 13       | 9               | 20           | 5                     | 217          |
+| \$10-20k  | 34       | 27      | 21       | 617      | 14                 | 869              | 9     | 244                     | 27                | 19     | 495           | 40     | 7      | 17       | 7               | 33           | 2                     | 299          |
+| \$20-30k  | 60       | 37      | 30       | 732      | 15                 | 1064             | 7     | 236                     | 24                | 25     | 619           | 48     | 9      | 23       | 11              | 40           | 3                     | 374          |
+| \$30-40k  | 81       | 52      | 34       | 670      | 11                 | 982              | 9     | 238                     | 24                | 25     | 655           | 51     | 10     | 32       | 13              | 46           | 4                     | 365          |
 
 While `relig_income` data had 18 rows and 11 columns, `transposed` has 11 rows and 18 columns. The information in both `relig_income` and `transposed` is the same, it's just in a different shape.
 
