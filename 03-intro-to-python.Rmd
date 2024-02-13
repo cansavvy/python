@@ -193,7 +193,7 @@ for x in [1, 2, 3]:
 
 ### Functions
 
-Python functions are defined with the def statement. The syntax for specifying function arguments and default values is very similar to R.
+Python functions are defined with the `def` statement. The syntax for specifying function arguments and default values is very similar to R.
 
 ```{python}
 def my_function(name = "World"):
@@ -289,7 +289,7 @@ from numpy import abs as abs2 # import only `numpy.abs`, bind it to `abs2`
 
 ### Learning More
 
-IF you want to learn more, browse the official documentation for Python: https://docs.Python.org/3/
+If you want to learn more, browse the [official documentation for Python](https://docs.Python.org/3/).
 
 ### References 
 
