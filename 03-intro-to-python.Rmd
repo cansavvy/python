@@ -193,7 +193,7 @@ for x in [1, 2, 3]:
 
 ### Functions
 
-Python functions are defined with the def statement. The syntax for specifying function arguments and default values is very similar to R.
+Python functions are defined with the `def` statement. The syntax for specifying function arguments and default values is very similar to R.
 
 ```{python}
 def my_function(name = "World"):
