@@ -1,5 +1,5 @@
 book_filename: DataTrail - Python
-chapter_name: Chapter
+chapter_name: "Chapter "
 repo: https://github.com/datatrail-jhu/python
 rmd_files:
 - index.Rmd
