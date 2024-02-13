@@ -5,17 +5,17 @@ Python is a popular programming language that was created by Guido van Rossum an
 
 Python is supported by multiple libraries that support data science tasks:
 
-- NumPy for numerical computing with multidimensional arrays
-- pandas for data manipulation and analysis with data frames
-- Matplotlib for data visualization
+- [NumPy](https://numpy.org/) for numerical computing with multidimensional arrays.
+- [pandas](https://pandas.pydata.org/) for data manipulation and analysis with data frames.
+- [Matplotlib](https://matplotlib.org/) for data visualization.
 
 ## Main Differences between R and Python
 
 The main difference between Python and R is that Python is a general-purpose programming language, while R is a statistical programming language. This means that Python is good at multiple things and can do most things, whereas R is very good at statistical analysis, but not as good at other things as Python.
 
-When you want to document your code, you can use Jupyter Notebooks. Jupyter Notebooks are an open source web application for easily sharing documents that contain your live Python code, equations, visualizations and data science explanations. 
+You can use Jupyter Notebooks to generate reports and share them with others. Jupyter Notebooks are an open source web application for easily sharing documents that contain your live Python code, equations, visualizations and data science explanations. 
 
-Python is particularly suited for large scale machine learning and deep learning with libraries such as TensorFlow, PyTorch, and scikit-learn.
+Python is particularly suited for large scale machine learning and deep learning with libraries such as [TensorFlow](https://www.tensorflow.org/), [PyTorch](https://pytorch.org/), and [scikit-learn](https://scikit-learn.org/stable/).
 
 
 ## Learning Objectives
