@@ -8,7 +8,7 @@ print("Hello world")
 
 ## How to Use the Setup
 
-You can write chapters for the course using standard markdown files in a variety of ways. Here are a few approaches that we've found useful. Before getting started, you need to set up a Python environment and install the Python requirements. Once you have Python set up, run `pip install -r requirements.txt` from the root directory to install all the requirements.
+You can write chapters for the course using standard markdown files in a variety of ways. Here are a few approaches that we've found useful. Before getting started, you need to set up a Python environment and install the Python requirements. Once you have Python set up, run `pip install -r requirements.txt` from the root directory to install all the requirements. If you want to use the interactive approach described below, also run `jupyter server extension enable jupytext` to enable [jupytext](https://jupytext.readthedocs.io/en/latest/index.html).
 
 ### The Bare-Bones Approach
 
