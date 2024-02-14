@@ -20,7 +20,7 @@ You can write chapters for the course using standard markdown files in a variety
 Recompiling the document with `make` every time you make a small change can be cumbersome. You can get an interactive environment using Jupyter Lab.
 
 1. Run `jupyter lab` from the command line to start a new Jupyter Lab server.
-2. Once the server has loaded (it can take a few seconds), right-click on the markdown file you want to modify, hover your mouse over "Open With", and select "Notebook".
+2. Once the server has loaded (it can take a few seconds), right-click on the markdown file you want to modify, hover your mouse over "Open With", and select "Notebook". If you don't see the "Notebook" option, shut down the server, execute `jupyter server extension enable jupytext`, then restart the server. 
 3. Make any changes in the notebook. You can execute code interactively. Hit save, and the markdown document will be updated.
 4. Once your happy with the document, make sure to run `make [your markdown document].ipynb.html` from the command line to verify your changes work as expected.
 
