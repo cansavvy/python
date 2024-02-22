@@ -2,7 +2,7 @@
 
 ## Data Formats
 
-Tidy data generally exist in two forms: wide data and long data. Both types of data are used and needed in data analysis. Fortunately, there are tools that can take you from wide-to-long and from long-to-wide. This makes it easy to work with any tidy data set. We'll discuss the basics of what wide and long data are and how to go back and forth between the two in Python. Getting data into the right format will be crucial later when summarizing data and visualizing it. To help you visualize data as its being reshaped, we recommend you play around with the [TidyDataTutor](https://tidydatatutor.com/vis.html).
+Tidy data generally exist in two forms: wide data and long data. Both types of data are used and needed in data analysis. Fortunately, there are tools that can take you from wide-to-long and from long-to-wide. This makes it easy to work with any tidy data set. We'll discuss the basics of what wide and long data are and how to go back and forth between the two in Python. Getting data into the right format will be crucial later when summarizing data and visualizing it. To help you visualize data as its being reshaped, we recommend you play around with the [PandasTidyDataTutor](https://pandastutor.com/).
 
 ### Wide Data
 
@@ -56,7 +56,7 @@ While long data formats are less readable than wide data at a glance, they are a
 
 ### Reshaping data
 
-Converting your data from wide-to-long or from long-to-wide data formats is referred to as **reshaping** your data. You can do this with the [`pandas``](https://pandas.pydata.org) package. In fact, we will use the pandas package for all of our data tidying, wrangling, and reshaping. As with most helpful Python packages, there is more functionality than what is discussed here, so feel free to explore the additional resources at the bottom to learn even more.
+Converting your data from wide-to-long or from long-to-wide data formats is referred to as **reshaping** your data. You can do this with the [`pandas`](https://pandas.pydata.org) package. In fact, we will use the pandas package for all of our data tidying, wrangling, and reshaping. As with most helpful Python packages, there is more functionality than what is discussed here, so feel free to explore the additional resources at the bottom to learn even more.
 
 For these examples, we'll work with the [`relig_income`](https://tidyr.tidyverse.org/reference/relig_income.html)  dataset available in `tidyr`. The data in this dataset includes the income ranges and religions from the Pew religion and income survey. The following code downloads the data from GitHub and displays the first few rows using the [`head`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.head.html) method of the dataframe.
 
@@ -148,7 +148,7 @@ While `relig_income` data had 18 rows and 11 columns, `transposed` has 11 rows a
 
 ## Additional Resources
 
-* [TidyDataTutor](https://tidydatatutor.com/vis.html).
+* [PandasTidyDataTutor](https://pandastutor.com/)
 * [pandas](https://pandas.pydata.org), a library for analyzing, wrangling, and tyding data in Python.
 * [pandas tutorial](https://pandas.pydata.org/docs/user_guide/10min.html).
 * [pandas cheatsheet](https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf).
