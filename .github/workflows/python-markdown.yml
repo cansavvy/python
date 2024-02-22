@@ -1,0 +1,23 @@
+name: Python Markdown Notebooks
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Execute Python Markdown Notebooks
+    runs-on: "ubuntu-latest"
+    steps:
+      - uses: "actions/checkout@v3"
+      - uses: "actions/setup-python@v4"
+        with:
+          python-version: "3.10"
+          cache: pip
+      - name: Install python dependencies
+        run: pip install --no-dependencies -r requirements.txt
+      - name: Execute the notebooks
+        run: make html
