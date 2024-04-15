@@ -13,11 +13,13 @@ Python is supported by multiple libraries that support data science tasks:
 
 The main difference between Python and R is that Python is a general-purpose programming language, while R is a statistical programming language. This means that Python is good at multiple things and can do most things, whereas R is very good at statistical analysis, but not as good at other things as Python.
 
-Python is also a "object oriented programming" language (often abbreviated OOP). Programming languages range from being *very* object oriented to not object oriented at all. R, for example is not object oriented much at all, it is not really built for making specific data classes, we typically just use the ones that come with it like data.frames, vectors, etc. But as an OOP, Python makes it easier to build and enforce your own types of objects. We'll dive more into OOP concepts in a later chapter. 
-
 You can use Jupyter Notebooks to generate reports and share them with others. Jupyter Notebooks are an open source web application for easily sharing documents that contain your live Python code, equations, visualizations and data science explanations. 
 
 Python is particularly suited for large scale machine learning and deep learning with libraries such as [TensorFlow](https://www.tensorflow.org/), [PyTorch](https://pytorch.org/), and [scikit-learn](https://scikit-learn.org/stable/).
+
+# TODO: When to use R vs Python
+
+When you want to do statistics, R. If you have big datasets you want to manipulate, you might want to go to Python. The community in Python isn't always stats-focused. For ex, Genomics community is big in R. 
 
 
 ## Learning Objectives
@@ -28,7 +30,7 @@ ottrpal::include_slide("https://docs.google.com/presentation/d/1k8uC1rqnGTSbKjBs
 
 ## Python Syntax for R Users
 
-An important difference in syntax is 0-based indexing for Python and 1-based indexing for R. This means that in R, indexing starts with 1 and in Python, indexing starts with 0. Coming from R, this means you have to subtract your "R indexes" by 1 to get the correct index in Python.
+Most important difference in syntax is 0-based indexing for Python and 1-based indexing for R. This means that in R, indexing starts with 1 and in Python, indexing starts with 0. Coming from R, this means you have to subtract your "R indexes" by 1 to get the correct index in Python.
 
 Other major differences in Python:
 
@@ -121,7 +123,7 @@ x[:]   # get all the items
 
 #### Tuples
 
-Tuples behave like lists, but are constructed using `()`, instead of `[]`. 
+Tuples behave like lists, but are constructued using `()`, instead of `[]`. 
 
 ```{python}
 x = (1, 2) # tuple of length 2
@@ -155,7 +157,7 @@ len(x)
 
 #### Dictionaries
 
-Dictionaries are data structures where you can retrieve items by name. They can be created using syntax like `{key: value}`.
+Dictionaries are data structures where you can retrieve items by name. They can be created using syntax like {key: value}.
 
 ```{python}
 d = {"key1": 1,
@@ -229,19 +231,19 @@ An object is any entity that you want to store and process data about. Each obje
 
 For example, we could have a class called Person. The properties of this class are what describe this Person class:
 
-- first_name
-- last_name
-- gender
-- date_of_birth
-- occupatiaon
+- `first_name`
+- `last_name`
+- `gender`
+- `date_of_birth`
+- `occupation`
 
 
 The methods of this class are the functions for this Person class:
 
-- walk()
-- run()
-- sleep()
-- eat()
+- `walk()`
+- `run()`
+- `sleep()`
+- `eat()`
 
 
 Here is a simple Person class for demonstration purposes.
