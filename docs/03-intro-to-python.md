@@ -1,256 +1,566 @@
 
-# A new chapter
+# Intro to Python
 
-*If you haven't yet read the getting started Wiki pages; [start there](https://github.com/jhudsl/OTTR_Template/wiki/Getting-started)
+Python is a popular programming language that was created by Guido van Rossum and released in 1991. 
 
-Every chapter needs to start out with this chunk of code:
+Python is supported by multiple libraries that support data science tasks:
 
+- [NumPy](https://numpy.org/) for numerical computing with multidimensional arrays.
+- [pandas](https://pandas.pydata.org/) for data manipulation and analysis with data frames.
+- [Matplotlib](https://matplotlib.org/) for data visualization.
+
+## Main Differences between R and Python
+
+The main difference between Python and R is that Python is a general-purpose programming language, while R is a statistical programming language. This means that Python is good at multiple things and can do most things, whereas R is very good at statistical analysis, but not as good at other things as Python.
+
+You can use Jupyter Notebooks to generate reports and share them with others. Jupyter Notebooks are an open source web application for easily sharing documents that contain your live Python code, equations, visualizations and data science explanations. 
+
+Python is particularly suited for large scale machine learning and deep learning with libraries such as [TensorFlow](https://www.tensorflow.org/), [PyTorch](https://pytorch.org/), and [scikit-learn](https://scikit-learn.org/stable/).
+
+# TODO: When to use R vs Python
 
 
 ## Learning Objectives
 
-*Every chapter also needs Learning objectives that will look like this:  
+<img src="03-intro-to-python_files/figure-html//1k8uC1rqnGTSbKjBsWvKYgiUUxO1q_VhJCwZQHJNWozA_g29054a882fd_0_52.png" alt="Major point!! example image" width="480" style="display: block; margin: auto;" />
 
-This chapter will cover:  
+## Python Syntax for R Users
 
-- {You can use https://tips.uark.edu/using-blooms-taxonomy/ to define some learning objectives here}
-- {Another learning objective}
+Most important difference in syntax is 0-based indexing for Python and 1-based indexing for R. This means that in R, indexing starts with 1 and in Python, indexing starts with 0. Coming from R, this means you have to subtract your "R indexes" by 1 to get the correct index in Python.
 
-## Libraries
+Other major differences in Python:
 
-For this chapter, we'll need the following packages attached:
+### Whitespace
 
-*Remember to add [any additional packages you need to your course's own docker image](https://github.com/jhudsl/OTTR_Template/wiki/Using-Docker#starting-a-new-docker-image).
+Important in Python. In R, expressions are grouped into a code block with `{}`. In Python, expressions are grouped by indentation level. 
 
-
-```r
-library(magrittr)
-```
-
-# Topic of Section
-
-You can write all your text in sections like this!
-
-## Subtopic
-
-Here's a subheading and some text in this subsection!
-
-### Code examples
-
-You can demonstrate code like this:
+For example, in R, an if statement looks like:
 
 
 ```r
-output_dir <- file.path("resources", "code_output")
-if (!dir.exists(output_dir)) {
-  dir.create(output_dir)
+x <- 1
+
+if (x > 0) {
+    print("x is positive")
+} else {
+    print("x is negative")
 }
 ```
 
-And make plots too:
+```
+## [1] "x is positive"
+```
+
+In Python, the equivalent if statement looks like:
+
+
+```python
+x = 1
+
+if x > 0:
+    print("x is positive")
+else:
+    print("x is negative")
+```
+
+```
+## x is positive
+```
+
+
+### Data Structures
+
+There are 4 different data storage formats, or data structures, in Python: lists, tuples, dictionaries, and sets
+
+#### Lists
+
+Python lists are created using brackets `[]`. You can add elements to the list through the `append()` method.
+
+
+```python
+x = [1, 2, 3]
+x.append(4) # add 4 to the end of list
+
+print("x is", x)
+```
+
+```
+## x is [1, 2, 3, 4]
+```
+
+```python
+#> x is [1, 2, 3, 4]
+```
+
+
+You can index into lists with integers using brackets `[]`, but note that indexing is 0-based.
+
+
+```python
+x = [1, 2, 3]
+
+x[0]
+```
+
+```
+## 1
+```
+
+```python
+#> 1
+x[1]
+```
+
+```
+## 2
+```
+
+```python
+#> 2
+x[2]
+```
+
+```
+## 3
+```
+
+```python
+#> 3
+```
+
+
+Negative numbers count from the end of the list.
+
+
+```python
+x = [1, 2, 3]
+
+x[-1]
+```
+
+```
+## 3
+```
+
+```python
+#> 3
+x[-2]
+```
+
+```
+## 2
+```
+
+```python
+#> 2
+x[-3]
+```
+
+```
+## 1
+```
+
+```python
+#> 1
+```
+
+You can slice ranges of lists using the : inside brackets. Note that the slice syntax is not inclusive of the end of the slice range.
+
+
+```python
+x = [1, 2, 3, 4, 5, 6]
+x[0:2] # get items at index positions 0, 1
+```
+
+```
+## [1, 2]
+```
+
+```python
+#> [1, 2]
+x[1:]  # get items from index position 1 to the end
+```
+
+```
+## [2, 3, 4, 5, 6]
+```
+
+```python
+#> [2, 3, 4, 5, 6]
+x[:-2] # get items from beginning up to the 2nd to last.
+```
+
+```
+## [1, 2, 3, 4]
+```
+
+```python
+#> [1, 2, 3, 4]
+x[:]   # get all the items
+```
+
+```
+## [1, 2, 3, 4, 5, 6]
+```
+
+```python
+#> [1, 2, 3, 4, 5, 6]
+```
+
+
+#### Tuples
+
+Tuples behave like lists, but are constructued using `()`, instead of `[]`. 
+
+
+```python
+x = (1, 2) # tuple of length 2
+type(x)
+```
+
+```
+## <class 'tuple'>
+```
+
+```python
+#> <class 'tuple'>
+len(x)
+```
+
+```
+## 2
+```
+
+```python
+#> 2
+x
+```
+
+```
+## (1, 2)
+```
+
+```python
+#> (1, 2)
+
+x = (1,) # tuple of length 1
+type(x)
+```
+
+```
+## <class 'tuple'>
+```
+
+```python
+#> <class 'tuple'>
+len(x)
+```
+
+```
+## 1
+```
+
+```python
+#> 1
+x
+```
+
+```
+## (1,)
+```
+
+```python
+#> (1,)
+
+x = 1, 2 # also a tuple
+type(x)
+```
+
+```
+## <class 'tuple'>
+```
+
+```python
+#> <class 'tuple'>
+len(x)
+```
+
+```
+## 2
+```
+
+```python
+#> 2
+
+x = 1, # beware a single trailing comma! This is a tuple!
+type(x)
+```
+
+```
+## <class 'tuple'>
+```
+
+```python
+#> <class 'tuple'>
+len(x)
+```
+
+```
+## 1
+```
+
+```python
+#> 1
+```
+
+#### Dictionaries
+
+Dictionaries are data structures where you can retrieve items by name. They can be created using syntax like {key: value}.
+
+
+```python
+d = {"key1": 1,
+     "key2": 2}
+
+d["key1"] 
+```
+
+```
+## 1
+```
+
+```python
+#> 1
+d["key3"] = 3
+d 
+```
+
+```
+## {'key1': 1, 'key2': 2, 'key3': 3}
+```
+
+```python
+#> {'key1': 1, 'key2': 2, 'key3': 3}
+```
+
+#### Sets 
+
+Sets are used to track unique items, and can be constructed using `{val1, val2}`.
+
+
+```python
+s = {1, 2, 3}
+
+type(s)
+```
+
+```
+## <class 'set'>
+```
+
+```python
+#> <class 'set'>
+s
+```
+
+```
+## {1, 2, 3}
+```
+
+```python
+#> {1, 2, 3}
+```
+
+### Iteration with for loops
+ 
+The `for` statement in Python is similar to the `for` loop in R. It can be used to iterate over any kind of data structure.
+
+
+```python
+for x in [1, 2, 3]:
+  print(x)
+```
+
+```
+## 1
+## 2
+## 3
+```
+
+```python
+#> 1
+#> 2
+#> 3
+```
+
+### Functions
+
+Python functions are defined with the `def` statement. The syntax for specifying function arguments and default values is very similar to R.
+
+
+```python
+def my_function(name = "World"):
+  print("Hello", name)
+
+my_function()
+```
+
+```
+## Hello World
+```
+
+```python
+#> Hello World
+my_function("Friend")
+```
+
+```
+## Hello Friend
+```
+
+```python
+#> Hello Friend
+```
+
+The equivalent R code would be
 
 
 ```r
-hist_plot <- hist(iris$Sepal.Length)
-```
+my_function <- function(name = "World") {
+  cat("Hello", name, "\n")
+}
 
-<img src="resources/images/03-intro-to-python_files/figure-html/unnamed-chunk-4-1.png" width="672" />
-
-You can also save these plots to file:
-
-
-```r
-png(file.path(output_dir, "test_plot.png"))
-hist_plot
+my_function()
 ```
 
 ```
-## $breaks
-## [1] 4.0 4.5 5.0 5.5 6.0 6.5 7.0 7.5 8.0
-## 
-## $counts
-## [1]  5 27 27 30 31 18  6  6
-## 
-## $density
-## [1] 0.06666667 0.36000000 0.36000000 0.40000000 0.41333333 0.24000000 0.08000000
-## [8] 0.08000000
-## 
-## $mids
-## [1] 4.25 4.75 5.25 5.75 6.25 6.75 7.25 7.75
-## 
-## $xname
-## [1] "iris$Sepal.Length"
-## 
-## $equidist
-## [1] TRUE
-## 
-## attr(,"class")
-## [1] "histogram"
+## Hello World
 ```
 
 ```r
-dev.off()
+#> Hello World
+my_function("Friend")
 ```
 
 ```
-## png 
-##   2
+## Hello Friend
 ```
-
-### Image example
-
-How to include a Google slide. It's simplest to use the `ottrpal` package:
-
-<img src="resources/images/03-intro-to-python_files/figure-html//1YmwKdIy9BeQ3EShgZhvtb3MgR8P6iDX4DfFD65W_gdQ_gcc4fbee202_0_141.png" title="Major point!! example image" alt="Major point!! example image" width="480" style="display: block; margin: auto;" />
-
-But if you have the slide or some other image locally downloaded you can also use html like this:
-
-<img src="resources/images/02-chapter_of_course_files/figure-html//1YmwKdIy9BeQ3EShgZhvtb3MgR8P6iDX4DfFD65W_gdQ_gcc4fbee202_0_141.png" title="Major point!! example image" alt="Major point!! example image" style="display: block; margin: auto;" />
-
-### Video examples
-
-To show videos in your course, you can use markdown syntax like this:
-
-[A video we want to show](https://www.youtube.com/embed/VOCYL-FNbr0)
-
-Alternatively, you can use `knitr::include_url()` like this:
-Note that we are using `echo=FALSE` in the code chunk because we don't want the code part of this to show up.
-If you are unfamiliar with [how R Markdown code chunks work, read this](https://rmarkdown.rstudio.com/lesson-3.html).
-
-<iframe src="https://www.youtube.com/embed/VOCYL-FNbr0" width="672" height="400px"></iframe>
-
-OR this works:
-
-<iframe src="https://www.youtube.com/embed/VOCYL-FNbr0" width="672" height="400px"></iframe>
-
-### Links to files
-
-This works:
-
-<iframe src="https://www.bgsu.edu/content/dam/BGSU/center-for-faculty-excellence/docs/TLGuides/TLGuide-Learning-Objectives.pdf" width="672" height="800px"></iframe>
-
-Or this:
-
-[This works](https://www.bgsu.edu/content/dam/BGSU/center-for-faculty-excellence/docs/TLGuides/TLGuide-Learning-Objectives.pdf).
-
-Or this:
-
-<iframe src="https://www.bgsu.edu/content/dam/BGSU/center-for-faculty-excellence/docs/TLGuides/TLGuide-Learning-Objectives.pdf" width="672" height="800px"></iframe>
-
-### Links to websites
-
-Examples of including a website link.
-
-This works:
-
-<iframe src="https://yihui.org" width="672" height="400px"></iframe>
-
-OR this:
-
-![Another link](https://yihui.org)
-
-OR this:
-
-<iframe src="https://yihui.org" width="672" height="400px"></iframe>
-
-### Citation examples
-
-We can put citations at the end of a sentence like this [@rmarkdown2021].
-Or multiple citations [@rmarkdown2021, @Xie2018].
-
-but they need a ; separator [@rmarkdown2021; @Xie2018].
-
-In text, we can put citations like this @rmarkdown2021.
-
-### FYI boxes
-
-::: {.fyi}
-Please click on the subsection headers in the left hand
-navigation bar (e.g., 2.1, 4.3) a second time to expand the
-table of contents and enable the `scroll_highlight` feature
-([see more](introduction.html#scroll-highlight)).
-:::
-
-### Dropdown summaries
-
-<details><summary> You can hide additional information in a dropdown menu </summary>
-Here's more words that are hidden.
-</details>
-
-## Print out session info
-
-You should print out session info when you have code for [reproducibility purposes](https://jhudatascience.org/Reproducibility_in_Cancer_Informatics/managing-package-versions.html).
-
 
 ```r
-devtools::session_info()
+#> Hello Friend
+```
+
+
+### Classes and Object Oriented Programming (OOP)
+
+In R, the most widely used unit of composition for code is functions, and in Python, it is classes. Classes are how you organize and find methods in Python. This approach to code composition is called object oriented programming (OOP). Let's dive in the details of OOP.
+
+An object is any entity that you want to store and process data about. Each object is an instance of a class in the computer's memory. A class is a template for creating objects. Creating an object from a class is called instantiation. It has properties and methods (functions for the class). 
+
+For example, we could have a class called Person. The properties of this class are what describe this Person class:
+
+- `first_name`
+- `last_name`
+- `gender`
+- `date_of_birth`
+- `occupation`
+
+
+The methods of this class are the functions for this Person class:
+
+- `walk()`
+- `run()`
+- `sleep()`
+- `eat()`
+
+
+Here is a simple Person class for demonstration purposes.
+
+
+```python
+class Person:
+  pass # `pass` means do nothing.
+
+Person
 ```
 
 ```
-## ─ Session info ───────────────────────────────────────────────────────────────
-##  setting  value                       
-##  version  R version 4.0.2 (2020-06-22)
-##  os       Ubuntu 20.04.3 LTS          
-##  system   x86_64, linux-gnu           
-##  ui       X11                         
-##  language (EN)                        
-##  collate  en_US.UTF-8                 
-##  ctype    en_US.UTF-8                 
-##  tz       Etc/UTC                     
-##  date     2023-12-11                  
-## 
-## ─ Packages ───────────────────────────────────────────────────────────────────
-##  package     * version    date       lib source                            
-##  assertthat    0.2.1      2019-03-21 [1] RSPM (R 4.0.3)                    
-##  bookdown      0.24       2022-02-15 [1] Github (rstudio/bookdown@88bc4ea) 
-##  callr         3.4.4      2020-09-07 [1] RSPM (R 4.0.2)                    
-##  cli           2.0.2      2020-02-28 [1] RSPM (R 4.0.0)                    
-##  crayon        1.3.4      2017-09-16 [1] RSPM (R 4.0.0)                    
-##  curl          4.3        2019-12-02 [1] RSPM (R 4.0.3)                    
-##  desc          1.2.0      2018-05-01 [1] RSPM (R 4.0.3)                    
-##  devtools      2.3.2      2020-09-18 [1] RSPM (R 4.0.3)                    
-##  digest        0.6.25     2020-02-23 [1] RSPM (R 4.0.0)                    
-##  ellipsis      0.3.1      2020-05-15 [1] RSPM (R 4.0.3)                    
-##  evaluate      0.14       2019-05-28 [1] RSPM (R 4.0.3)                    
-##  fansi         0.4.1      2020-01-08 [1] RSPM (R 4.0.0)                    
-##  fs            1.5.0      2020-07-31 [1] RSPM (R 4.0.3)                    
-##  glue          1.6.1      2022-01-22 [1] CRAN (R 4.0.2)                    
-##  highr         0.8        2019-03-20 [1] RSPM (R 4.0.3)                    
-##  hms           0.5.3      2020-01-08 [1] RSPM (R 4.0.0)                    
-##  htmltools     0.5.0      2020-06-16 [1] RSPM (R 4.0.1)                    
-##  httr          1.4.2      2020-07-20 [1] RSPM (R 4.0.3)                    
-##  jquerylib     0.1.4      2021-04-26 [1] CRAN (R 4.0.2)                    
-##  knitr         1.33       2022-02-15 [1] Github (yihui/knitr@a1052d1)      
-##  lifecycle     1.0.0      2021-02-15 [1] CRAN (R 4.0.2)                    
-##  magrittr    * 2.0.2      2022-01-26 [1] CRAN (R 4.0.2)                    
-##  memoise       1.1.0      2017-04-21 [1] RSPM (R 4.0.0)                    
-##  ottrpal       0.1.2      2022-02-15 [1] Github (jhudsl/ottrpal@1018848)   
-##  pillar        1.4.6      2020-07-10 [1] RSPM (R 4.0.2)                    
-##  pkgbuild      1.1.0      2020-07-13 [1] RSPM (R 4.0.2)                    
-##  pkgconfig     2.0.3      2019-09-22 [1] RSPM (R 4.0.3)                    
-##  pkgload       1.1.0      2020-05-29 [1] RSPM (R 4.0.3)                    
-##  png           0.1-7      2013-12-03 [1] CRAN (R 4.0.2)                    
-##  prettyunits   1.1.1      2020-01-24 [1] RSPM (R 4.0.3)                    
-##  processx      3.4.4      2020-09-03 [1] RSPM (R 4.0.2)                    
-##  ps            1.3.4      2020-08-11 [1] RSPM (R 4.0.2)                    
-##  purrr         0.3.4      2020-04-17 [1] RSPM (R 4.0.3)                    
-##  R6            2.4.1      2019-11-12 [1] RSPM (R 4.0.0)                    
-##  readr         1.4.0      2020-10-05 [1] RSPM (R 4.0.2)                    
-##  remotes       2.2.0      2020-07-21 [1] RSPM (R 4.0.3)                    
-##  rlang         0.4.10     2022-02-15 [1] Github (r-lib/rlang@f0c9be5)      
-##  rmarkdown     2.10       2022-02-15 [1] Github (rstudio/rmarkdown@02d3c25)
-##  rprojroot     2.0.2      2020-11-15 [1] CRAN (R 4.0.2)                    
-##  sessioninfo   1.1.1      2018-11-05 [1] RSPM (R 4.0.3)                    
-##  stringi       1.5.3      2020-09-09 [1] RSPM (R 4.0.3)                    
-##  stringr       1.4.0      2019-02-10 [1] RSPM (R 4.0.3)                    
-##  testthat      3.0.1      2022-02-15 [1] Github (R-lib/testthat@e99155a)   
-##  tibble        3.0.3      2020-07-10 [1] RSPM (R 4.0.2)                    
-##  usethis       2.1.5.9000 2022-02-15 [1] Github (r-lib/usethis@57b109a)    
-##  vctrs         0.3.4      2020-08-29 [1] RSPM (R 4.0.2)                    
-##  withr         2.3.0      2020-09-22 [1] RSPM (R 4.0.2)                    
-##  xfun          0.26       2022-02-15 [1] Github (yihui/xfun@74c2a66)       
-##  yaml          2.2.1      2020-02-01 [1] RSPM (R 4.0.3)                    
-## 
-## [1] /usr/local/lib/R/site-library
-## [2] /usr/local/lib/R/library
+## <class '__main__.Person'>
 ```
+
+```python
+#> <class '__main__.Person'>
+type(Person)
+```
+
+```
+## <class 'type'>
+```
+
+```python
+#> <class 'type'>
+
+instance = Person()
+instance
+```
+
+```
+## <__main__.Person object at 0x10e0f5ed0>
+```
+
+```python
+#> <__main__.Person object at 0x102ba75e0>
+type(instance)
+```
+
+```
+## <class '__main__.Person'>
+```
+
+```python
+#> <class '__main__.Person'>
+```
+
+Like the `def` statement, the `class` statement is used to create a Python class. First note the strong naming convention, classes are typically CamelCase, and functions are typically snake_case. After defining Person, you can interact with it, and see that it has type 'type'. Calling `instance = Person()` creates a new object instance of the class, which has type `Person` (ignore the __main__. prefix for now). 
+
+
+### Importing modules
+
+In R, authors can bundle their code into R packages, and R users can access objects from R packages via `library()` or `::`. In Python, authors bundle code into modules, and users access modules using `import`.
+
+
+```python
+import numpy
+```
+
+Once loaded, you can access symbols from the module using `.`, which is equivalent to `::` in R.
+
+
+```python
+numpy.abs(-1)
+```
+
+```
+## 1
+```
+
+There is special syntax for conveniently bounding a module to a symbol upon importing.
+
+
+```python
+import numpy        # import
+import numpy as np  # import and bind to a custom symbol `np`
+
+from numpy import abs # import only `numpy.abs`
+from numpy import abs as abs2 # import only `numpy.abs`, bind it to `abs2`
+```
+
+### Learning More
+
+If you want to learn more, browse the [official documentation for Python](https://docs.Python.org/3/).
+
+### References 
+
+- https://rstudio.github.io/reticulate/articles/python_primer.html
+- https://www.youtube.com/watch?v=m_MQYyJpIjg
+
