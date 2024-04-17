@@ -1,4 +1,7 @@
 # ignore nonsense files
+.ipynb_checkpoints
+*.ipynb.html
+*.ipynb
 .DS_Store
 .Rhistory
 .local
@@ -10,3 +13,5 @@ spell_check_results.tsv
 docker/git_token.txt
 .Rproj.user
 python.Rproj
+venv
+.vscode
