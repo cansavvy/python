@@ -15,3 +15,4 @@ docker/git_token.txt
 python.Rproj
 venv
 .vscode
+.ipynb_checkpoints/*
