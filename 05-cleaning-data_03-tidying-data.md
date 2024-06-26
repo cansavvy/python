@@ -31,13 +31,13 @@ msleep.info()
 <class 'pandas.core.frame.DataFrame'>
 RangeIndex: 83 entries, 0 to 82
 Data columns (total 11 columns):
- #   Column        Non-Null Count  Dtype  
----  ------        --------------  -----  
- 0   name          83 non-null     object 
- 1   genus         83 non-null     object 
- 2   vore          76 non-null     object 
- 3   order         83 non-null     object 
- 4   conservation  54 non-null     object 
+ #   Column        Non-Null Count  Dtype
+---  ------        --------------  -----
+ 0   name          83 non-null     object
+ 1   genus         83 non-null     object
+ 2   vore          76 non-null     object
+ 3   order         83 non-null     object
+ 4   conservation  54 non-null     object
  5   sleep_total   83 non-null     float64
  6   sleep_rem     61 non-null     float64
  7   sleep_cycle   32 non-null     float64
@@ -250,7 +250,7 @@ reordered_columns.sort_values(["name", "sleep_total"])
 
 ## Creating new columns
 
-You will often find when working with data that you need an additional column. For example, if you had two datasets you wanted to combine, you may want to make a new column in each dataset called `dataset`. In one dataset you may put `datasetA` in each row. In the second dataset, you could put `datasetB`. This way, once you combined the data, you would be able to keep track of which dataset each row came from originally. More often, however, you'll likely want to create a new column that calculates a new variable based on information in a column you already have. For example, in our mammal sleep dataset, `sleep_total` is in hours. What if you wanted to have that information in minutes? You could create a new column with this very information! 
+You will often find when working with data that you need an additional column. For example, if you had two datasets you wanted to combine, you may want to make a new column in each dataset called `dataset`. In one dataset you may put `datasetA` in each row. In the second dataset, you could put `datasetB`. This way, once you combined the data, you would be able to keep track of which dataset each row came from originally. More often, however, you'll likely want to create a new column that calculates a new variable based on information in a column you already have. For example, in our mammal sleep dataset, `sleep_total` is in hours. What if you wanted to have that information in minutes? You could create a new column with this very information!
 
 Returning to our `msleep` dataset, after filtering and re-ordering, we can create a new column. We will calculate the number of minutes each mammal sleeps by multiplying the number of hours each animal sleeps by 60 minutes. A new column can be created by indexing the data frame with a column name and assigning to it.
 
@@ -291,7 +291,7 @@ conservation.head()
 |  3 | EN = Endangered             |
 |  4 | VU = Vulnerable             |
 
-In this dataset, we see that there is a single column that includes *both* the abbreviation for the conservation term as well as what that abbreviation means. Recall that this violates one of the tidy data principles covered in the first lesson: Put just one thing in a cell. To work with these data, you could imagine that you may want these two pieces of information (the abbreviation and the description) in two different columns. We'll use the [`str.split`](https://pandas.pydata.org/docs/reference/api/pandas.Series.str.split.html) method of the column to separate the abbrevation and description.
+In this dataset, we see that there is a single column that includes *both* the abbreviation for the conservation term as well as what that abbreviation means. Recall that this violates one of the tidy data principles covered in the first lesson: Put just one thing in a cell. To work with these data, you could imagine that you may want these two pieces of information (the abbreviation and the description) in two different columns. We'll use the [`str.split`](https://pandas.pydata.org/docs/reference/api/pandas.Series.str.split.html) method of the column to separate the abbreviation and description.
 
 ```python
 separated = conservation["conservation abbreviation"].str.split(" = ", expand=True)
@@ -306,7 +306,7 @@ separated.head()
 |  3 | EN  | Endangered            |
 |  4 | VU  | Vulnerable            |
 
-We selected the column using indexing notation `[...]` instead of simply writing `conservation.conservation abbrevation` because the column name contains a space. This is another violation of tidy data! Variable names should have underscores, not spaces! The `str.split` method requires the characters that currently separate the pieces of information ` = ` as its first argument. Setting `expand=True` tells `str.split` to expand the results of splitting into separate columns. You'll learn more about working with strings in a [later section](05-working-with-strings.md).
+We selected the column using indexing notation `[...]` instead of simply writing `conservation.conservation abbreviation` because the column name contains a space. This is another violation of tidy data! Variable names should have underscores, not spaces! The `str.split` method requires the characters that currently separate the pieces of information ` = ` as its first argument. Setting `expand=True` tells `str.split` to expand the results of splitting into separate columns. You'll learn more about working with strings in a [later section](05-working-with-strings.md).
 
 However, the separated data frame does not have sensible column names. We can fix that by explicitly setting the column names.
 
@@ -329,11 +329,11 @@ separated.head()
 The opposite of `split` is to concatenate values from different columns which you can achieve using the `+` operator. Using the code forming the two separate columns above, we can add on an extra line of code to re-join these separate columns, returning what we started with.
 
 ```python
-separated["conservation_abbrevation"] = separated.abbreviation + " = " + separated.conservation
+separated["conservation_abbreviation"] = separated.abbreviation + " = " + separated.conservation
 separated.head()
 ```
 
-|    | abbreviation   | conservation          | conservation_abbrevation   |
+|    | abbreviation   | conservation          | conservation_abbreviation   |
 |---:|:---------------|:----------------------|:---------------------------|
 |  0 | EX             | Extinct               | EX = Extinct               |
 |  1 | EW             | Extinct in the wild   | EW = Extinct in the wild   |
@@ -363,7 +363,7 @@ merged = pd.merge(msleep, separated, left_on="conservation", right_on="abbreviat
 merged.head()
 ```
 
-|    | name                       | genus      | vore   | order        | conservation_x   |   sleep_total |   sleep_rem |   sleep_cycle |   awake |   brainwt |   bodywt | abbreviation   | conservation_y   | conservation_abbrevation   |
+|    | name                       | genus      | vore   | order        | conservation_x   |   sleep_total |   sleep_rem |   sleep_cycle |   awake |   brainwt |   bodywt | abbreviation   | conservation_y   | conservation_abbreviation   |
 |---:|:---------------------------|:-----------|:-------|:-------------|:-----------------|--------------:|------------:|--------------:|--------:|----------:|---------:|:---------------|:-----------------|:---------------------------|
 |  0 | Cheetah                    | Acinonyx   | carni  | Carnivora    | LC               |          12.1 |       nan   |    nan        |    11.9 | nan       |   50     | LC             | Least Concern    | LC = Least Concern         |
 |  1 | Owl monkey                 | Aotus      | omni   | Primates     | nan              |          17   |         1.8 |    nan        |     7   |   0.0155  |    0.48  | nan            | nan              | nan                        |
@@ -447,7 +447,7 @@ Often, data scientists will want to summarize information in their dataset. You 
 
 ### [`groupby`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.groupby.html)
 
-`group_by` groups a dataset by one or more variables. 
+`group_by` groups a dataset by one or more variables.
 
 ```python
 groups = msleep.groupby("order")

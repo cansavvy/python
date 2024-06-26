@@ -90,8 +90,8 @@ As data are often stored in wide formats, you'll likely use `melt` a lot more fr
 
 ```python
 long_df = billboard.melt(
-    id_vars=["year", "artist", "track", "time", "date.entered"], 
-    var_name="week", 
+    id_vars=["year", "artist", "track", "time", "date.entered"],
+    var_name="week",
     value_name="rank",
 )
 long_df.head()
@@ -115,8 +115,8 @@ To return your long data back to its original form, you can use `pivot`. Here yo
 ```python
 # Use pivot to reshape from long to wide.
 wide_df = long_df.pivot(
-    index=["year", "artist", "track", "time", "date.entered"], 
-    columns="week", 
+    index=["year", "artist", "track", "time", "date.entered"],
+    columns="week",
     values="rank",
 )
 # Take a look at the wide data.
@@ -157,6 +157,6 @@ While `billboard` data had 317 rows and 81 columns, `transposed` has 81 rows and
 ## Additional Resources
 
 * [PandasTidyDataTutor](https://pandastutor.com/)
-* [pandas](https://pandas.pydata.org), a library for analyzing, wrangling, and tyding data in Python.
+* [pandas](https://pandas.pydata.org), a library for analyzing, wrangling, and tidying data in Python.
 * [pandas tutorial](https://pandas.pydata.org/docs/user_guide/10min.html).
 * [pandas cheatsheet](https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf).
