@@ -13,3 +13,6 @@ spell_check_results.tsv
 docker/git_token.txt
 venv
 .vscode
+playground
+__pycache__
+*.pyc
