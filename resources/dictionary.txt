@@ -21,6 +21,7 @@ brainwt
 carni
 Cercopithecus
 Cetacea
+chapt
 cheatsheet
 Chiroptera
 Cingulata
@@ -40,7 +41,6 @@ Funder
 fyi
 Galago
 GDSCN
-Generis
 Github
 Grivet
 HeightInches
@@ -65,6 +65,7 @@ mentorship
 Mohammed
 Monotremata
 Muschelli
+nan
 Nayef
 NCI
 NHGRI
