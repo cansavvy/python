@@ -8,7 +8,9 @@ rmd_files:
 - 02-set-up.Rmd
 - 03-intro-to-python.Rmd
 - 04-getting-data.Rmd
-- 05-cleaning-data.Rmd
+- 05-cleaning-data_01-intro.md
+- 05-cleaning-data_02-reshaping-data.md
+- 05-cleaning-data_03-tidying-data.md
 - 06-plotting-data.Rmd
 - 07-getting-stats.Rmd
 - 08-scripting-python.Rmd
