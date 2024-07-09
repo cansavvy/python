@@ -156,7 +156,18 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4" data-path="intro-to-python.html"><a href="intro-to-python.html"><i class="fa fa-check"></i><b>4</b> Intro to Python</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="intro-to-python.html"><a href="intro-to-python.html#learning-objectives-1"><i class="fa fa-check"></i><b>4.1</b> Learning Objectives</a></li>
+<li class="chapter" data-level="4.1" data-path="intro-to-python.html"><a href="intro-to-python.html#main-differences-between-r-and-python"><i class="fa fa-check"></i><b>4.1</b> Main Differences between R and Python</a></li>
+<li class="chapter" data-level="4.2" data-path="intro-to-python.html"><a href="intro-to-python.html#learning-objectives-1"><i class="fa fa-check"></i><b>4.2</b> Learning Objectives</a></li>
+<li class="chapter" data-level="4.3" data-path="intro-to-python.html"><a href="intro-to-python.html#python-syntax-for-r-users"><i class="fa fa-check"></i><b>4.3</b> Python Syntax for R Users</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="intro-to-python.html"><a href="intro-to-python.html#whitespace"><i class="fa fa-check"></i><b>4.3.1</b> Whitespace</a></li>
+<li class="chapter" data-level="4.3.2" data-path="intro-to-python.html"><a href="intro-to-python.html#data-structures"><i class="fa fa-check"></i><b>4.3.2</b> Data Structures</a></li>
+<li class="chapter" data-level="4.3.3" data-path="intro-to-python.html"><a href="intro-to-python.html#iteration-with-for-loops"><i class="fa fa-check"></i><b>4.3.3</b> Iteration with for loops</a></li>
+<li class="chapter" data-level="4.3.4" data-path="intro-to-python.html"><a href="intro-to-python.html#functions"><i class="fa fa-check"></i><b>4.3.4</b> Functions</a></li>
+<li class="chapter" data-level="4.3.5" data-path="intro-to-python.html"><a href="intro-to-python.html#importing-modules"><i class="fa fa-check"></i><b>4.3.5</b> Importing modules</a></li>
+<li class="chapter" data-level="4.3.6" data-path="intro-to-python.html"><a href="intro-to-python.html#learning-more"><i class="fa fa-check"></i><b>4.3.6</b> Learning More</a></li>
+<li class="chapter" data-level="4.3.7" data-path="intro-to-python.html"><a href="intro-to-python.html#references"><i class="fa fa-check"></i><b>4.3.7</b> References</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="getting-data.html"><a href="getting-data.html"><i class="fa fa-check"></i><b>5</b> Getting Data</a>
 <ul>
@@ -225,7 +236,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.1" data-path="getting-the-most-out-of-python.html"><a href="getting-the-most-out-of-python.html#learning-objectives-7"><i class="fa fa-check"></i><b>12.1</b> Learning Objectives</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="about-the-authors.html"><a href="about-the-authors.html"><i class="fa fa-check"></i>About the Authors</a></li>
-<li class="chapter" data-level="13" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>13</b> References</a></li>
+<li class="chapter" data-level="13" data-path="references-1.html"><a href="references-1.html"><i class="fa fa-check"></i><b>13</b> References</a></li>
 <li class="divider"></li>
 <p style="text-align:center;"> <a href="https://github.com/jhudsl/OTTR_Template" target="blank" > This content was published with</a> <a href="https://bookdown.org/" target="blank"> bookdown by: </a> </p>
 <p style="text-align:center;"> <a href="http://jhudatascience.org/"> The Johns Hopkins Data Science Lab </a></p>
@@ -263,10 +274,227 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="intro-to-python" class="section level1" number="4">
 <h1><span class="header-section-number">Chapter 4</span> Intro to Python</h1>
-<div id="learning-objectives-1" class="section level2" number="4.1">
-<h2><span class="header-section-number">4.1</span> Learning Objectives</h2>
-<p><img src="03-intro-to-python_files/figure-html/1k8uC1rqnGTSbKjBsWvKYgiUUxO1q_VhJCwZQHJNWozA_g29054a882fd_0_52.png" title="Major point!! example image" alt="Major point!! example image" width="480" style="display: block; margin: auto;" /></p>
+<p>Python is a popular programming language that was created by Guido van Rossum and released in 1991.</p>
+<p>Python is supported by multiple libraries that support data science tasks:</p>
+<ul>
+<li><a href="https://numpy.org/">NumPy</a> for numerical computing with multidimensional arrays.</li>
+<li><a href="https://pandas.pydata.org/">pandas</a> for data manipulation and analysis with data frames.</li>
+<li><a href="https://matplotlib.org/">Matplotlib</a> for data visualization.</li>
+</ul>
+<div id="main-differences-between-r-and-python" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Main Differences between R and Python</h2>
+<table style="width:100%;">
+<colgroup>
+<col width="14%" />
+<col width="42%" />
+<col width="43%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Feature</th>
+<th>Python</th>
+<th>R</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Purpose</td>
+<td>General-purpose programming language</td>
+<td>Statistical programming language</td>
+</tr>
+<tr class="even">
+<td>Suitability</td>
+<td>Good at multiple things, including machine learning and deep learning</td>
+<td>Very good at statistical analysis but less versatile for other tasks</td>
+</tr>
+<tr class="odd">
+<td>Key Libraries</td>
+<td><a href="https://www.tensorflow.org/">TensorFlow</a>, <a href="https://pytorch.org/">PyTorch</a>, <a href="https://scikit-learn.org/stable/">scikit-learn</a></td>
+<td>Primarily statistical and visualization libraries (not specified in the text)</td>
+</tr>
+<tr class="even">
+<td>Tool for Sharing</td>
+<td>Jupyter Notebooks: Open source web application for sharing documents with live Python code, equations, visualizations, and explanations</td>
+<td>Same as Python, as Jupyter Notebooks support both Python and R</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="learning-objectives-1" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Learning Objectives</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb3-1"><a href="intro-to-python.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="al">![alternative if the image is broken](https://docs.google.com/presentation/d/1k8uC1rqnGTSbKjBsWvKYgiUUxO1q_VhJCwZQHJNWozA/export/png?pageid=g29054a882fd_0_52)</span></span></code></pre></div>
+</div>
+<div id="python-syntax-for-r-users" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> Python Syntax for R Users</h2>
+<p>An important difference in syntax is 0-based indexing for Python and 1-based indexing for R. This means that in R, indexing starts with 1 and in Python, indexing starts with 0. Coming from R, this means you have to subtract your “R indexes” by 1 to get the correct index in Python.</p>
+<p>Other major differences in Python:</p>
+<div id="whitespace" class="section level3" number="4.3.1">
+<h3><span class="header-section-number">4.3.1</span> Whitespace</h3>
+<p>Important in Python. In R, expressions are grouped into a code block with <code>{}</code>. In Python, expressions are grouped by indentation level.</p>
+<p>For example, in R, an if statement looks like:</p>
+<pre class="{r}"><code>x &lt;- 1
 
+if (x &gt; 0) {
+    print(&quot;x is positive&quot;)
+} else {
+    print(&quot;x is negative&quot;)
+}</code></pre>
+<p>In Python, the equivalent if statement looks like:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="intro-to-python.html#cb5-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb5-2"><a href="intro-to-python.html#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="intro-to-python.html#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb5-4"><a href="intro-to-python.html#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;x is positive&quot;</span>)</span>
+<span id="cb5-5"><a href="intro-to-python.html#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb5-6"><a href="intro-to-python.html#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;x is negative&quot;</span>)</span></code></pre></div>
+</div>
+<div id="data-structures" class="section level3" number="4.3.2">
+<h3><span class="header-section-number">4.3.2</span> Data Structures</h3>
+<p>There are 4 different data storage formats, or data structures, in Python: lists, tuples, dictionaries, and sets</p>
+<div id="lists" class="section level4" number="4.3.2.1">
+<h4><span class="header-section-number">4.3.2.1</span> Lists</h4>
+<p>Python lists are created using brackets <code>[]</code>. You can add elements to the list through the <code>append()</code> method.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="intro-to-python.html#cb6-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
+<span id="cb6-2"><a href="intro-to-python.html#cb6-2" aria-hidden="true" tabindex="-1"></a>x.append(<span class="dv">4</span>) <span class="co"># add 4 to the end of list</span></span>
+<span id="cb6-3"><a href="intro-to-python.html#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="intro-to-python.html#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;x is&quot;</span>, x)</span>
+<span id="cb6-5"><a href="intro-to-python.html#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; x is [1, 2, 3, 4]</span></span></code></pre></div>
+<p>You can index into lists with integers using brackets <code>[]</code>, but note that indexing is 0-based.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="intro-to-python.html#cb7-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
+<span id="cb7-2"><a href="intro-to-python.html#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="intro-to-python.html#cb7-3" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">0</span>]</span>
+<span id="cb7-4"><a href="intro-to-python.html#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1</span></span>
+<span id="cb7-5"><a href="intro-to-python.html#cb7-5" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">1</span>]</span>
+<span id="cb7-6"><a href="intro-to-python.html#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2</span></span>
+<span id="cb7-7"><a href="intro-to-python.html#cb7-7" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">2</span>]</span>
+<span id="cb7-8"><a href="intro-to-python.html#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3</span></span></code></pre></div>
+<p>Negative numbers count from the end of the list.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="intro-to-python.html#cb8-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
+<span id="cb8-2"><a href="intro-to-python.html#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="intro-to-python.html#cb8-3" aria-hidden="true" tabindex="-1"></a>x[<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb8-4"><a href="intro-to-python.html#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3</span></span>
+<span id="cb8-5"><a href="intro-to-python.html#cb8-5" aria-hidden="true" tabindex="-1"></a>x[<span class="op">-</span><span class="dv">2</span>]</span>
+<span id="cb8-6"><a href="intro-to-python.html#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2</span></span>
+<span id="cb8-7"><a href="intro-to-python.html#cb8-7" aria-hidden="true" tabindex="-1"></a>x[<span class="op">-</span><span class="dv">3</span>]</span>
+<span id="cb8-8"><a href="intro-to-python.html#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1</span></span></code></pre></div>
+<p>You can slice ranges of lists using the : inside brackets. Note that the slice syntax is not inclusive of the end of the slice range.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="intro-to-python.html#cb9-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]</span>
+<span id="cb9-2"><a href="intro-to-python.html#cb9-2" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">0</span>:<span class="dv">2</span>] <span class="co"># get items at index positions 0, 1</span></span>
+<span id="cb9-3"><a href="intro-to-python.html#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1, 2]</span></span>
+<span id="cb9-4"><a href="intro-to-python.html#cb9-4" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">1</span>:]  <span class="co"># get items from index position 1 to the end</span></span>
+<span id="cb9-5"><a href="intro-to-python.html#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2, 3, 4, 5, 6]</span></span>
+<span id="cb9-6"><a href="intro-to-python.html#cb9-6" aria-hidden="true" tabindex="-1"></a>x[:<span class="op">-</span><span class="dv">2</span>] <span class="co"># get items from beginning up to the 2nd to last.</span></span>
+<span id="cb9-7"><a href="intro-to-python.html#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1, 2, 3, 4]</span></span>
+<span id="cb9-8"><a href="intro-to-python.html#cb9-8" aria-hidden="true" tabindex="-1"></a>x[:]   <span class="co"># get all the items</span></span>
+<span id="cb9-9"><a href="intro-to-python.html#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1, 2, 3, 4, 5, 6]</span></span></code></pre></div>
+</div>
+<div id="tuples" class="section level4" number="4.3.2.2">
+<h4><span class="header-section-number">4.3.2.2</span> Tuples</h4>
+<p>Tuples behave like lists, but are constructed using <code>()</code>, instead of <code>[]</code>.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="intro-to-python.html#cb10-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> (<span class="dv">1</span>, <span class="dv">2</span>) <span class="co"># tuple of length 2</span></span>
+<span id="cb10-2"><a href="intro-to-python.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(x)</span>
+<span id="cb10-3"><a href="intro-to-python.html#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;class &#39;tuple&#39;&gt;</span></span>
+<span id="cb10-4"><a href="intro-to-python.html#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(x)</span>
+<span id="cb10-5"><a href="intro-to-python.html#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2</span></span>
+<span id="cb10-6"><a href="intro-to-python.html#cb10-6" aria-hidden="true" tabindex="-1"></a>x</span>
+<span id="cb10-7"><a href="intro-to-python.html#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (1, 2)</span></span>
+<span id="cb10-8"><a href="intro-to-python.html#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="intro-to-python.html#cb10-9" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> (<span class="dv">1</span>,) <span class="co"># tuple of length 1</span></span>
+<span id="cb10-10"><a href="intro-to-python.html#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(x)</span>
+<span id="cb10-11"><a href="intro-to-python.html#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;class &#39;tuple&#39;&gt;</span></span>
+<span id="cb10-12"><a href="intro-to-python.html#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(x)</span>
+<span id="cb10-13"><a href="intro-to-python.html#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1</span></span>
+<span id="cb10-14"><a href="intro-to-python.html#cb10-14" aria-hidden="true" tabindex="-1"></a>x</span>
+<span id="cb10-15"><a href="intro-to-python.html#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (1,)</span></span>
+<span id="cb10-16"><a href="intro-to-python.html#cb10-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-17"><a href="intro-to-python.html#cb10-17" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">1</span>, <span class="dv">2</span> <span class="co"># also a tuple</span></span>
+<span id="cb10-18"><a href="intro-to-python.html#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(x)</span>
+<span id="cb10-19"><a href="intro-to-python.html#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;class &#39;tuple&#39;&gt;</span></span>
+<span id="cb10-20"><a href="intro-to-python.html#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(x)</span>
+<span id="cb10-21"><a href="intro-to-python.html#cb10-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2</span></span>
+<span id="cb10-22"><a href="intro-to-python.html#cb10-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-23"><a href="intro-to-python.html#cb10-23" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">1</span>, <span class="co"># beware a single trailing comma! This is a tuple!</span></span>
+<span id="cb10-24"><a href="intro-to-python.html#cb10-24" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(x)</span>
+<span id="cb10-25"><a href="intro-to-python.html#cb10-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;class &#39;tuple&#39;&gt;</span></span>
+<span id="cb10-26"><a href="intro-to-python.html#cb10-26" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(x)</span>
+<span id="cb10-27"><a href="intro-to-python.html#cb10-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1</span></span></code></pre></div>
+</div>
+<div id="dictionaries" class="section level4" number="4.3.2.3">
+<h4><span class="header-section-number">4.3.2.3</span> Dictionaries</h4>
+<p>Dictionaries are data structures where you can retrieve items by name. They can be created using syntax like <code>{key: value}</code>.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="intro-to-python.html#cb11-1" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> {<span class="st">&quot;key1&quot;</span>: <span class="dv">1</span>,</span>
+<span id="cb11-2"><a href="intro-to-python.html#cb11-2" aria-hidden="true" tabindex="-1"></a>     <span class="st">&quot;key2&quot;</span>: <span class="dv">2</span>}</span>
+<span id="cb11-3"><a href="intro-to-python.html#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="intro-to-python.html#cb11-4" aria-hidden="true" tabindex="-1"></a>d[<span class="st">&quot;key1&quot;</span>] </span>
+<span id="cb11-5"><a href="intro-to-python.html#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1</span></span>
+<span id="cb11-6"><a href="intro-to-python.html#cb11-6" aria-hidden="true" tabindex="-1"></a>d[<span class="st">&quot;key3&quot;</span>] <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb11-7"><a href="intro-to-python.html#cb11-7" aria-hidden="true" tabindex="-1"></a>d </span>
+<span id="cb11-8"><a href="intro-to-python.html#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; {&#39;key1&#39;: 1, &#39;key2&#39;: 2, &#39;key3&#39;: 3}</span></span></code></pre></div>
+</div>
+<div id="sets" class="section level4" number="4.3.2.4">
+<h4><span class="header-section-number">4.3.2.4</span> Sets</h4>
+<p>Sets are used to track unique items, and can be constructed using <code>{val1, val2}</code>.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="intro-to-python.html#cb12-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
+<span id="cb12-2"><a href="intro-to-python.html#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="intro-to-python.html#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(s)</span>
+<span id="cb12-4"><a href="intro-to-python.html#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;class &#39;set&#39;&gt;</span></span>
+<span id="cb12-5"><a href="intro-to-python.html#cb12-5" aria-hidden="true" tabindex="-1"></a>s</span>
+<span id="cb12-6"><a href="intro-to-python.html#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; {1, 2, 3}</span></span></code></pre></div>
+</div>
+</div>
+<div id="iteration-with-for-loops" class="section level3" number="4.3.3">
+<h3><span class="header-section-number">4.3.3</span> Iteration with for loops</h3>
+<p>The <code>for</code> statement in Python is similar to the <code>for</code> loop in R. It can be used to iterate over any kind of data structure.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="intro-to-python.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x <span class="kw">in</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]:</span>
+<span id="cb13-2"><a href="intro-to-python.html#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(x)</span>
+<span id="cb13-3"><a href="intro-to-python.html#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1</span></span>
+<span id="cb13-4"><a href="intro-to-python.html#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2</span></span>
+<span id="cb13-5"><a href="intro-to-python.html#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3</span></span></code></pre></div>
+</div>
+<div id="functions" class="section level3" number="4.3.4">
+<h3><span class="header-section-number">4.3.4</span> Functions</h3>
+<p>Python functions are defined with the <code>def</code> statement. The syntax for specifying function arguments and default values is very similar to R.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="intro-to-python.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> my_function(name <span class="op">=</span> <span class="st">&quot;World&quot;</span>):</span>
+<span id="cb14-2"><a href="intro-to-python.html#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">&quot;Hello&quot;</span>, name)</span>
+<span id="cb14-3"><a href="intro-to-python.html#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="intro-to-python.html#cb14-4" aria-hidden="true" tabindex="-1"></a>my_function()</span>
+<span id="cb14-5"><a href="intro-to-python.html#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Hello World</span></span>
+<span id="cb14-6"><a href="intro-to-python.html#cb14-6" aria-hidden="true" tabindex="-1"></a>my_function(<span class="st">&quot;Friend&quot;</span>)</span>
+<span id="cb14-7"><a href="intro-to-python.html#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Hello Friend</span></span></code></pre></div>
+<p>The equivalent R code would be</p>
+<pre class="{r}"><code>my_function &lt;- function(name = &quot;World&quot;) {
+  cat(&quot;Hello&quot;, name, &quot;\n&quot;)
+}
+
+my_function()
+#&gt; Hello World
+my_function(&quot;Friend&quot;)
+#&gt; Hello Friend</code></pre>
+</div>
+<div id="importing-modules" class="section level3" number="4.3.5">
+<h3><span class="header-section-number">4.3.5</span> Importing modules</h3>
+<p>In R, authors can bundle their code into R packages, and R users can access objects from R packages via <code>library()</code> or <code>::</code>. In Python, authors bundle code into modules, and users access modules using <code>import</code>.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="intro-to-python.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy</span></code></pre></div>
+<p>Once loaded, you can access symbols from the module using <code>.</code>, which is equivalent to <code>::</code> in R.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="intro-to-python.html#cb17-1" aria-hidden="true" tabindex="-1"></a>numpy.<span class="bu">abs</span>(<span class="op">-</span><span class="dv">1</span>)</span></code></pre></div>
+<p>There is special syntax for conveniently bounding a module to a symbol upon importing.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="intro-to-python.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy        <span class="co"># import</span></span>
+<span id="cb18-2"><a href="intro-to-python.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np  <span class="co"># import and bind to a custom symbol `np`</span></span>
+<span id="cb18-3"><a href="intro-to-python.html#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="intro-to-python.html#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> <span class="bu">abs</span> <span class="co"># import only `numpy.abs`</span></span>
+<span id="cb18-5"><a href="intro-to-python.html#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> <span class="bu">abs</span> <span class="im">as</span> abs2 <span class="co"># import only `numpy.abs`, bind it to `abs2`</span></span></code></pre></div>
+</div>
+<div id="learning-more" class="section level3" number="4.3.6">
+<h3><span class="header-section-number">4.3.6</span> Learning More</h3>
+<p>If you want to learn more, browse the <a href="https://docs.Python.org/3/">official documentation for Python</a>.</p>
+</div>
+<div id="references" class="section level3" number="4.3.7">
+<h3><span class="header-section-number">4.3.7</span> References</h3>
+<ul>
+<li><a href="https://rstudio.github.io/reticulate/articles/python_primer.html" class="uri">https://rstudio.github.io/reticulate/articles/python_primer.html</a></li>
+<li><a href="https://www.youtube.com/watch?v=m_MQYyJpIjg" class="uri">https://www.youtube.com/watch?v=m_MQYyJpIjg</a></li>
+</ul>
+
+</div>
 </div>
 </div>
 <hr>
