@@ -17,9 +17,6 @@ You can use Jupyter Notebooks to generate reports and share them with others. Ju
 
 Python is particularly suited for large scale machine learning and deep learning with libraries such as [TensorFlow](https://www.tensorflow.org/), [PyTorch](https://pytorch.org/), and [scikit-learn](https://scikit-learn.org/stable/).
 
-# TODO: When to use R vs Python
-
-
 ## Learning Objectives
 
 <img src="03-intro-to-python_files/figure-html//1k8uC1rqnGTSbKjBsWvKYgiUUxO1q_VhJCwZQHJNWozA_g29054a882fd_0_52.png" alt="Major point!! example image" width="480" style="display: block; margin: auto;" />
@@ -563,4 +560,6 @@ If you want to learn more, browse the [official documentation for Python](https:
 
 - https://rstudio.github.io/reticulate/articles/python_primer.html
 - https://www.youtube.com/watch?v=m_MQYyJpIjg
+
+<img src="03-intro-to-python_files/figure-html//1k8uC1rqnGTSbKjBsWvKYgiUUxO1q_VhJCwZQHJNWozA_g29054a882fd_0_52.png" title="Major point!! example image" alt="Major point!! example image" width="480" style="display: block; margin: auto;" />
 

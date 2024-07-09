@@ -16,3 +16,6 @@ python.Rproj
 venv
 .vscode
 .ipynb_checkpoints/*
+playground
+__pycache__
+*.pyc

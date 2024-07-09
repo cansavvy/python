@@ -1,0 +1,1877 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 8 How to Tidy Data | DataTrail - Python</title>
+  <meta name="description" content="Description about Course/Book." />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 8 How to Tidy Data | DataTrail - Python" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Description about Course/Book." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 8 How to Tidy Data | DataTrail - Python" />
+  
+  <meta name="twitter:description" content="Description about Course/Book." />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <link rel="shortcut icon" href="assets/DataTrail_favicon.ico" type="image/x-icon" />
+<link rel="prev" href="reshaping-data.html"/>
+<link rel="next" href="plotting-data.html"/>
+<script src="libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="assets/style_DataTrail.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<a href="https://www.datatrail.org/"><img src="assets/DataTrail_logo.jpg" style="padding-left: 0px; padding-top: 8px;"</a>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About this Course</a></li>
+<li class="chapter" data-level="1" data-path="demo-chapter.html"><a href="demo-chapter.html"><i class="fa fa-check"></i><b>1</b> Demo Chapter</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="demo-chapter.html"><a href="demo-chapter.html#how-to-use-the-setup"><i class="fa fa-check"></i><b>1.1</b> How to Use the Setup</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="demo-chapter.html"><a href="demo-chapter.html#the-bare-bones-approach"><i class="fa fa-check"></i><b>1.1.1</b> The Bare-Bones Approach</a></li>
+<li class="chapter" data-level="1.1.2" data-path="demo-chapter.html"><a href="demo-chapter.html#the-interactive-approach"><i class="fa fa-check"></i><b>1.1.2</b> The Interactive Approach</a></li>
+<li class="chapter" data-level="1.1.3" data-path="demo-chapter.html"><a href="demo-chapter.html#adding-google-slide-images"><i class="fa fa-check"></i><b>1.1.3</b> Adding Google Slide Images</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="introduction.html"><a href="introduction.html#motivation"><i class="fa fa-check"></i><b>2.1</b> Motivation</a></li>
+<li class="chapter" data-level="2.2" data-path="introduction.html"><a href="introduction.html#target-audience"><i class="fa fa-check"></i><b>2.2</b> Target Audience</a></li>
+<li class="chapter" data-level="2.3" data-path="introduction.html"><a href="introduction.html#curriculum"><i class="fa fa-check"></i><b>2.3</b> Curriculum</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="set-up.html"><a href="set-up.html"><i class="fa fa-check"></i><b>3</b> Set up</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="set-up.html"><a href="set-up.html#learning-objectives"><i class="fa fa-check"></i><b>3.1</b> Learning Objectives</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="intro-to-python.html"><a href="intro-to-python.html"><i class="fa fa-check"></i><b>4</b> Intro to Python</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="intro-to-python.html"><a href="intro-to-python.html#learning-objectives-1"><i class="fa fa-check"></i><b>4.1</b> Learning Objectives</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="getting-data.html"><a href="getting-data.html"><i class="fa fa-check"></i><b>5</b> Getting Data</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="getting-data.html"><a href="getting-data.html#learning-objectives-2"><i class="fa fa-check"></i><b>5.1</b> Learning Objectives</a></li>
+</ul></li>
+<li class="part"><span><b>Cleaning Data</b></span></li>
+<li class="chapter" data-level="6" data-path="cleaning-data.html"><a href="cleaning-data.html"><i class="fa fa-check"></i><b>6</b> Cleaning Data</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="cleaning-data.html"><a href="cleaning-data.html#learning-objectives-3"><i class="fa fa-check"></i><b>6.1</b> Learning Objectives</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="reshaping-data.html"><a href="reshaping-data.html"><i class="fa fa-check"></i><b>7</b> Reshaping Data</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="reshaping-data.html"><a href="reshaping-data.html#data-formats"><i class="fa fa-check"></i><b>7.1</b> Data Formats</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="reshaping-data.html"><a href="reshaping-data.html#wide-data"><i class="fa fa-check"></i><b>7.1.1</b> Wide Data</a></li>
+<li class="chapter" data-level="7.1.2" data-path="reshaping-data.html"><a href="reshaping-data.html#long-data"><i class="fa fa-check"></i><b>7.1.2</b> Long Data</a></li>
+<li class="chapter" data-level="7.1.3" data-path="reshaping-data.html"><a href="reshaping-data.html#reshaping-data-1"><i class="fa fa-check"></i><b>7.1.3</b> Reshaping data</a></li>
+<li class="chapter" data-level="7.1.4" data-path="reshaping-data.html"><a href="reshaping-data.html#melt"><i class="fa fa-check"></i><b>7.1.4</b> <span><code>melt</code></span></a></li>
+<li class="chapter" data-level="7.1.5" data-path="reshaping-data.html"><a href="reshaping-data.html#pivot"><i class="fa fa-check"></i><b>7.1.5</b> <span><code>pivot</code></span></a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="reshaping-data.html"><a href="reshaping-data.html#transposing-data"><i class="fa fa-check"></i><b>7.2</b> Transposing data</a></li>
+<li class="chapter" data-level="7.3" data-path="reshaping-data.html"><a href="reshaping-data.html#additional-resources"><i class="fa fa-check"></i><b>7.3</b> Additional Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="how-to-tidy-data.html"><a href="how-to-tidy-data.html"><i class="fa fa-check"></i><b>8</b> How to Tidy Data</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="how-to-tidy-data.html"><a href="how-to-tidy-data.html#exploring-data"><i class="fa fa-check"></i><b>8.1</b> Exploring Data</a></li>
+<li class="chapter" data-level="8.2" data-path="how-to-tidy-data.html"><a href="how-to-tidy-data.html#filtering-data"><i class="fa fa-check"></i><b>8.2</b> Filtering Data</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="how-to-tidy-data.html"><a href="how-to-tidy-data.html#filtering-rows"><i class="fa fa-check"></i><b>8.2.1</b> Filtering Rows</a></li>
+<li class="chapter" data-level="8.2.2" data-path="how-to-tidy-data.html"><a href="how-to-tidy-data.html#selecting-columns"><i class="fa fa-check"></i><b>8.2.2</b> Selecting Columns</a></li>
+<li class="chapter" data-level="8.2.3" data-path="how-to-tidy-data.html"><a href="how-to-tidy-data.html#renaming-columns"><i class="fa fa-check"></i><b>8.2.3</b> Renaming Columns</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="how-to-tidy-data.html"><a href="how-to-tidy-data.html#reordering"><i class="fa fa-check"></i><b>8.3</b> Reordering</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="how-to-tidy-data.html"><a href="how-to-tidy-data.html#reordering-columns"><i class="fa fa-check"></i><b>8.3.1</b> Reordering Columns</a></li>
+<li class="chapter" data-level="8.3.2" data-path="how-to-tidy-data.html"><a href="how-to-tidy-data.html#reordering-rows"><i class="fa fa-check"></i><b>8.3.2</b> Reordering Rows</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="how-to-tidy-data.html"><a href="how-to-tidy-data.html#creating-new-columns"><i class="fa fa-check"></i><b>8.4</b> Creating new columns</a></li>
+<li class="chapter" data-level="8.5" data-path="how-to-tidy-data.html"><a href="how-to-tidy-data.html#separating-columns"><i class="fa fa-check"></i><b>8.5</b> Separating Columns</a></li>
+<li class="chapter" data-level="8.6" data-path="how-to-tidy-data.html"><a href="how-to-tidy-data.html#merging-columns"><i class="fa fa-check"></i><b>8.6</b> Merging Columns</a></li>
+<li class="chapter" data-level="8.7" data-path="how-to-tidy-data.html"><a href="how-to-tidy-data.html#combining-data-across-data-frames"><i class="fa fa-check"></i><b>8.7</b> Combining data across data frames</a></li>
+<li class="chapter" data-level="8.8" data-path="how-to-tidy-data.html"><a href="how-to-tidy-data.html#summarizing-data"><i class="fa fa-check"></i><b>8.8</b> Summarizing Data</a>
+<ul>
+<li class="chapter" data-level="8.8.1" data-path="how-to-tidy-data.html"><a href="how-to-tidy-data.html#describe"><i class="fa fa-check"></i><b>8.8.1</b> <span><code>describe</code></span></a></li>
+</ul></li>
+<li class="chapter" data-level="8.9" data-path="how-to-tidy-data.html"><a href="how-to-tidy-data.html#grouping-data"><i class="fa fa-check"></i><b>8.9</b> Grouping Data</a>
+<ul>
+<li class="chapter" data-level="8.9.1" data-path="how-to-tidy-data.html"><a href="how-to-tidy-data.html#groupby"><i class="fa fa-check"></i><b>8.9.1</b> <span><code>groupby</code></span></a></li>
+</ul></li>
+<li class="chapter" data-level="8.10" data-path="how-to-tidy-data.html"><a href="how-to-tidy-data.html#conclusion"><i class="fa fa-check"></i><b>8.10</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="plotting-data.html"><a href="plotting-data.html"><i class="fa fa-check"></i><b>9</b> Plotting Data</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="plotting-data.html"><a href="plotting-data.html#learning-objectives-4"><i class="fa fa-check"></i><b>9.1</b> Learning Objectives</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="getting-stats.html"><a href="getting-stats.html"><i class="fa fa-check"></i><b>10</b> Getting Stats</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="getting-stats.html"><a href="getting-stats.html#learning-objectives-5"><i class="fa fa-check"></i><b>10.1</b> Learning Objectives</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="scripting-in-python.html"><a href="scripting-in-python.html"><i class="fa fa-check"></i><b>11</b> Scripting in Python</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="scripting-in-python.html"><a href="scripting-in-python.html#learning-objectives-6"><i class="fa fa-check"></i><b>11.1</b> Learning Objectives</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="getting-the-most-out-of-python.html"><a href="getting-the-most-out-of-python.html"><i class="fa fa-check"></i><b>12</b> Getting the most out of Python</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="getting-the-most-out-of-python.html"><a href="getting-the-most-out-of-python.html#learning-objectives-7"><i class="fa fa-check"></i><b>12.1</b> Learning Objectives</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="about-the-authors.html"><a href="about-the-authors.html"><i class="fa fa-check"></i>About the Authors</a></li>
+<li class="chapter" data-level="13" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>13</b> References</a></li>
+<li class="divider"></li>
+<p style="text-align:center;"> <a href="https://github.com/jhudsl/OTTR_Template" target="blank" > This content was published with</a> <a href="https://bookdown.org/" target="blank"> bookdown by: </a> </p>
+<p style="text-align:center;"> <a href="http://jhudatascience.org/"> The Johns Hopkins Data Science Lab </a></p>
+<a href="http://jhudatascience.org/"><img src="https://jhudatascience.org/images/dasl.png" style=" width: 80%; filter: grayscale(100%); padding-left: 40px; padding-top: 8px; vertical-align: top "</a>
+<p style="text-align:center; font-size: 12px;"> <a href="https://github.com/rstudio4edu/rstudio4edu-book/"> Style adapted from: rstudio4edu-book </a> <a href ="https://creativecommons.org/licenses/by/2.0/"> (CC-BY 2.0) </a></p>
+<p style="padding-left: 40px;"><div class="trapezoid" style = "padding-left: 40px;"><span>  <a href="https://forms.gle/VWaJYc3zATe3qxYC9"> Click here to provide feedback</a> <img src="assets/itcr_arrow.png" style=" width: 10%" ></span></div></p>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">DataTrail - Python</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<head>
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0">
+  <!--script src="https://kit.fontawesome.com/6a26f47516.js"></script-->
+  <!--<script src="assets/hideOutput.js"></script>-->
+  <link href="assets/style_DataTrail.css" rel="stylesheet">
+</head>
+        
+
+
+<div class="hero-image-container"> 
+  <img class= "hero-image" src="assets/DataTrail.jpg">
+</div>
+<div id="how-to-tidy-data" class="section level1" number="8">
+<h1><span class="header-section-number">Chapter 8</span> How to Tidy Data</h1>
+<p>So far we’ve discussed what tidy and untidy data are. We’ve (hopefully) convinced you that tidy data are the right type of data to work with. And, more than that, hopefully we’ve explained that data are not always the tidiest when they come to you at the start of a project. An incredibly important skill of a data scientist is to be able to take data from an untidy format and get it into a tidy format. We’ve started to discuss how to do this in the last lesson where we learned to reshape data. In this lesson, we’ll discuss a number of other ways in which data can be tidied and the necessary tools to <strong>tidy data</strong>.</p>
+<p>These skills are often referred to as <strong>data wrangling</strong>. They are skills that allow you to wrangle data from the format they’re currently in into the format you actually want them in.</p>
+<p>As this is an incredibly important topic, this will be a long lesson covering a number of packages and topics. Take your time working through it and be sure to understand all of the examples!</p>
+<div class="figure">
+<img src="https://docs.google.com/presentation/d/1Z1pukaF-HrZHEwSfr3SV8N2Slo2rMEJxpgl1qJv-QL4/export/png?id=1Z1pukaF-HrZHEwSfr3SV8N2Slo2rMEJxpgl1qJv-QL4&amp;pageid=g38bb68a535_0_1" alt="" />
+<p class="caption">data wrangling example</p>
+</div>
+<p>In R, you used a range of packages like <code>dplyr</code>, <code>tidyr</code>, <code>janitor</code>, and <code>skimr</code>. In Python, we’ll use only one library: <code>pandas</code>.</p>
+<div id="exploring-data" class="section level2" number="8.1">
+<h2><span class="header-section-number">8.1</span> Exploring Data</h2>
+<p>We’ll be using a dataset from the <code>ggplot2</code> package called <a href="https://ggplot2.tidyverse.org/reference/msleep.html"><code>msleep</code></a>. This dataset includes sleep times and weights from a number of different mammals. It has 83 rows, with each row including information about a different type of animal, and 11 variables. As each row is a different animal and each column includes information about that animal, this is a <strong>wide</strong> dataset.</p>
+<p>To get an idea of what variables are included in this data frame, you can use the <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.info.html"><code>info</code></a> method. This method summarizes how many rows there are (observations) and how many columns there are (variables). Additionally, it gives you a glimpse into the type of data contained in each column. Specifically, in this data set, we know that the first column is <code>name</code> and that it contains objects (strings, in this case). <code>info</code> also tells you how many non-null (or non-missing) entries there are in each column. For example, there are no missing values in the <code>name</code> columns (83 non-null out of a total of 83 rows), but there are 51 missing values (32 non-null out of a total of 83 rows) in the <code>sleep_cycle</code> column.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="how-to-tidy-data.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb7-2"><a href="how-to-tidy-data.html#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="how-to-tidy-data.html#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="how-to-tidy-data.html#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Download and read the dataset into a pandas data frame.</span></span>
+<span id="cb7-5"><a href="how-to-tidy-data.html#cb7-5" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">&quot;https://raw.githubusercontent.com/tidyverse/ggplot2/main/data-raw/msleep.csv&quot;</span></span>
+<span id="cb7-6"><a href="how-to-tidy-data.html#cb7-6" aria-hidden="true" tabindex="-1"></a>msleep <span class="op">=</span> pd.read_csv(url)</span>
+<span id="cb7-7"><a href="how-to-tidy-data.html#cb7-7" aria-hidden="true" tabindex="-1"></a>msleep.info()</span></code></pre></div>
+<pre><code>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 83 entries, 0 to 82
+Data columns (total 11 columns):
+ #   Column        Non-Null Count  Dtype
+---  ------        --------------  -----
+ 0   name          83 non-null     object
+ 1   genus         83 non-null     object
+ 2   vore          76 non-null     object
+ 3   order         83 non-null     object
+ 4   conservation  54 non-null     object
+ 5   sleep_total   83 non-null     float64
+ 6   sleep_rem     61 non-null     float64
+ 7   sleep_cycle   32 non-null     float64
+ 8   awake         83 non-null     float64
+ 9   brainwt       56 non-null     float64
+ 10  bodywt        83 non-null     float64
+dtypes: float64(6), object(5)
+memory usage: 7.3+ KB</code></pre>
+<p>Another method to get a glimpse of your data is <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.head.html"><code>head</code></a> which returns the first few rows of the data frame.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="how-to-tidy-data.html#cb9-1" aria-hidden="true" tabindex="-1"></a>msleep.head()</span></code></pre></div>
+<table>
+<colgroup>
+<col width="2%" />
+<col width="18%" />
+<col width="7%" />
+<col width="5%" />
+<col width="9%" />
+<col width="10%" />
+<col width="9%" />
+<col width="8%" />
+<col width="9%" />
+<col width="5%" />
+<col width="7%" />
+<col width="6%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="right"></th>
+<th align="left">name</th>
+<th align="left">genus</th>
+<th align="left">vore</th>
+<th align="left">order</th>
+<th align="left">conservation</th>
+<th align="right">sleep_total</th>
+<th align="right">sleep_rem</th>
+<th align="right">sleep_cycle</th>
+<th align="right">awake</th>
+<th align="right">brainwt</th>
+<th align="right">bodywt</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0</td>
+<td align="left">Cheetah</td>
+<td align="left">Acinonyx</td>
+<td align="left">carni</td>
+<td align="left">Carnivora</td>
+<td align="left">lc</td>
+<td align="right">12.1</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">11.9</td>
+<td align="right">nan</td>
+<td align="right">50</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="left">Owl monkey</td>
+<td align="left">Aotus</td>
+<td align="left">omni</td>
+<td align="left">Primates</td>
+<td align="left">nan</td>
+<td align="right">17</td>
+<td align="right">1.8</td>
+<td align="right">nan</td>
+<td align="right">7</td>
+<td align="right">0.0155</td>
+<td align="right">0.48</td>
+</tr>
+<tr class="odd">
+<td align="right">2</td>
+<td align="left">Mountain beaver</td>
+<td align="left">Aplodontia</td>
+<td align="left">herbi</td>
+<td align="left">Rodentia</td>
+<td align="left">nt</td>
+<td align="right">14.4</td>
+<td align="right">2.4</td>
+<td align="right">nan</td>
+<td align="right">9.6</td>
+<td align="right">nan</td>
+<td align="right">1.35</td>
+</tr>
+<tr class="even">
+<td align="right">3</td>
+<td align="left">Greater short-tailed shrew</td>
+<td align="left">Blarina</td>
+<td align="left">omni</td>
+<td align="left">Soricomorpha</td>
+<td align="left">lc</td>
+<td align="right">14.9</td>
+<td align="right">2.3</td>
+<td align="right">0.133333</td>
+<td align="right">9.1</td>
+<td align="right">0.00029</td>
+<td align="right">0.019</td>
+</tr>
+<tr class="odd">
+<td align="right">4</td>
+<td align="left">Cow</td>
+<td align="left">Bos</td>
+<td align="left">herbi</td>
+<td align="left">Artiodactyla</td>
+<td align="left">domesticated</td>
+<td align="right">4</td>
+<td align="right">0.7</td>
+<td align="right">0.666667</td>
+<td align="right">20</td>
+<td align="right">0.423</td>
+<td align="right">600</td>
+</tr>
+</tbody>
+</table>
+<p>Similarly, <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.tail.html"><code>tail</code></a> returns the last few rows. You can pass an integer <code>k</code> to both methods to show the first or last <code>k</code> rows.</p>
+</div>
+<div id="filtering-data" class="section level2" number="8.2">
+<h2><span class="header-section-number">8.2</span> Filtering Data</h2>
+<p>When working with a large dataset, you’re often interested in only working with a portion of the data at any one time. For example, if you had data on people from ages 0 to 100 years old, but you wanted to ask a question that only pertained to children, you would likely want to only work with data from those individuals who were less than 18 years old. To do this, you would want to <strong>filter</strong> your dataset to only include data from these select individuals. Filtering can be done by row or by column, and we’ll discuss the syntax for both<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>.</p>
+<div id="filtering-rows" class="section level3" number="8.2.1">
+<h3><span class="header-section-number">8.2.1</span> Filtering Rows</h3>
+<p>If you were only interested in learning more about the sleep times of <code>Primates</code>, we could filter this dataset to include only data about those mammals that are also Primates. As we can see from <code>head</code>, this information is contained within the <code>order</code> variable. Using <code>pandas</code>, we filter the data as follows.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="how-to-tidy-data.html#cb10-1" aria-hidden="true" tabindex="-1"></a>primates <span class="op">=</span> msleep[msleep.order <span class="op">==</span> <span class="st">&quot;Primates&quot;</span>]</span>
+<span id="cb10-2"><a href="how-to-tidy-data.html#cb10-2" aria-hidden="true" tabindex="-1"></a>primates.head()</span></code></pre></div>
+<table>
+<colgroup>
+<col width="2%" />
+<col width="10%" />
+<col width="10%" />
+<col width="5%" />
+<col width="7%" />
+<col width="11%" />
+<col width="10%" />
+<col width="9%" />
+<col width="10%" />
+<col width="6%" />
+<col width="7%" />
+<col width="7%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="right"></th>
+<th align="left">name</th>
+<th align="left">genus</th>
+<th align="left">vore</th>
+<th align="left">order</th>
+<th align="left">conservation</th>
+<th align="right">sleep_total</th>
+<th align="right">sleep_rem</th>
+<th align="right">sleep_cycle</th>
+<th align="right">awake</th>
+<th align="right">brainwt</th>
+<th align="right">bodywt</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left">Owl monkey</td>
+<td align="left">Aotus</td>
+<td align="left">omni</td>
+<td align="left">Primates</td>
+<td align="left">nan</td>
+<td align="right">17</td>
+<td align="right">1.8</td>
+<td align="right">nan</td>
+<td align="right">7</td>
+<td align="right">0.0155</td>
+<td align="right">0.48</td>
+</tr>
+<tr class="even">
+<td align="right">12</td>
+<td align="left">Grivet</td>
+<td align="left">Cercopithecus</td>
+<td align="left">omni</td>
+<td align="left">Primates</td>
+<td align="left">lc</td>
+<td align="right">10</td>
+<td align="right">0.7</td>
+<td align="right">nan</td>
+<td align="right">14</td>
+<td align="right">nan</td>
+<td align="right">4.75</td>
+</tr>
+<tr class="odd">
+<td align="right">25</td>
+<td align="left">Patas monkey</td>
+<td align="left">Erythrocebus</td>
+<td align="left">omni</td>
+<td align="left">Primates</td>
+<td align="left">lc</td>
+<td align="right">10.9</td>
+<td align="right">1.1</td>
+<td align="right">nan</td>
+<td align="right">13.1</td>
+<td align="right">0.115</td>
+<td align="right">10</td>
+</tr>
+<tr class="even">
+<td align="right">28</td>
+<td align="left">Galago</td>
+<td align="left">Galago</td>
+<td align="left">omni</td>
+<td align="left">Primates</td>
+<td align="left">nan</td>
+<td align="right">9.8</td>
+<td align="right">1.1</td>
+<td align="right">0.55</td>
+<td align="right">14.2</td>
+<td align="right">0.005</td>
+<td align="right">0.2</td>
+</tr>
+<tr class="odd">
+<td align="right">33</td>
+<td align="left">Human</td>
+<td align="left">Homo</td>
+<td align="left">omni</td>
+<td align="left">Primates</td>
+<td align="left">nan</td>
+<td align="right">8</td>
+<td align="right">1.9</td>
+<td align="right">1.5</td>
+<td align="right">16</td>
+<td align="right">1.32</td>
+<td align="right">62</td>
+</tr>
+</tbody>
+</table>
+<p>Note that we are using the equality <code>==</code> comparison operator that you learned about in the previous course rather than the assignment operator <code>=</code>. This is an important distinction. So what’s happening here? Remember than indexing an object with <code>[...]</code> selects some of its items. Here, we select all items that satisfy the condition that <code>order</code> is <code>Primates</code>.</p>
+<p>We now have a smaller dataset of only 12 mammals (as opposed to the original 83) and we can see that the <code>order</code> variable column only includes <code>Primates</code>.</p>
+<p>But, what if we were only interested in Primates who sleep more than 10 hours total per night? This information is in the <code>sleep_total</code> column. To accomplish this, you would use the following syntax, combining the two conditions using the <code>&amp;</code> operator. This operator is the logical <code>AND</code>. In other words, both <code>order == "Primates"</code> <em>and</em> <code>sleep_total &gt; 10</code> need to be satisfied for the animal to be included.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="how-to-tidy-data.html#cb11-1" aria-hidden="true" tabindex="-1"></a>sleepy_primates <span class="op">=</span> msleep[(msleep.order <span class="op">==</span> <span class="st">&quot;Primates&quot;</span>) <span class="op">&amp;</span> (msleep.sleep_total <span class="op">&gt;</span> <span class="dv">10</span>)]</span>
+<span id="cb11-2"><a href="how-to-tidy-data.html#cb11-2" aria-hidden="true" tabindex="-1"></a>sleepy_primates</span></code></pre></div>
+<table style="width:100%;">
+<colgroup>
+<col width="2%" />
+<col width="10%" />
+<col width="10%" />
+<col width="5%" />
+<col width="7%" />
+<col width="11%" />
+<col width="10%" />
+<col width="9%" />
+<col width="10%" />
+<col width="6%" />
+<col width="7%" />
+<col width="7%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="right"></th>
+<th align="left">name</th>
+<th align="left">genus</th>
+<th align="left">vore</th>
+<th align="left">order</th>
+<th align="left">conservation</th>
+<th align="right">sleep_total</th>
+<th align="right">sleep_rem</th>
+<th align="right">sleep_cycle</th>
+<th align="right">awake</th>
+<th align="right">brainwt</th>
+<th align="right">bodywt</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left">Owl monkey</td>
+<td align="left">Aotus</td>
+<td align="left">omni</td>
+<td align="left">Primates</td>
+<td align="left">nan</td>
+<td align="right">17</td>
+<td align="right">1.8</td>
+<td align="right">nan</td>
+<td align="right">7</td>
+<td align="right">0.0155</td>
+<td align="right">0.48</td>
+</tr>
+<tr class="even">
+<td align="right">25</td>
+<td align="left">Patas monkey</td>
+<td align="left">Erythrocebus</td>
+<td align="left">omni</td>
+<td align="left">Primates</td>
+<td align="left">lc</td>
+<td align="right">10.9</td>
+<td align="right">1.1</td>
+<td align="right">nan</td>
+<td align="right">13.1</td>
+<td align="right">0.115</td>
+<td align="right">10</td>
+</tr>
+<tr class="odd">
+<td align="right">37</td>
+<td align="left">Macaque</td>
+<td align="left">Macaca</td>
+<td align="left">omni</td>
+<td align="left">Primates</td>
+<td align="left">nan</td>
+<td align="right">10.1</td>
+<td align="right">1.2</td>
+<td align="right">0.75</td>
+<td align="right">13.9</td>
+<td align="right">0.179</td>
+<td align="right">6.8</td>
+</tr>
+<tr class="even">
+<td align="right">44</td>
+<td align="left">Slow loris</td>
+<td align="left">Nyctibeus</td>
+<td align="left">carni</td>
+<td align="left">Primates</td>
+<td align="left">nan</td>
+<td align="right">11</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">13</td>
+<td align="right">0.0125</td>
+<td align="right">1.4</td>
+</tr>
+<tr class="odd">
+<td align="right">55</td>
+<td align="left">Potto</td>
+<td align="left">Perodicticus</td>
+<td align="left">omni</td>
+<td align="left">Primates</td>
+<td align="left">lc</td>
+<td align="right">11</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">13</td>
+<td align="right">nan</td>
+<td align="right">1.1</td>
+</tr>
+</tbody>
+</table>
+<p>Now, we have a dataset focused in on only 5 mammals, all of which are primates who sleep for more than 10 hours a night total. The number of columns hasn’t changed. All 11 variables are still shown in columns because the function <code>filter()</code> filters on rows, not columns.</p>
+<p>If you wanted to select animals that are primates <em>or</em> sleep more than ten hours, you’d use the <code>|</code> operator to combine the two conditions like so.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="how-to-tidy-data.html#cb12-1" aria-hidden="true" tabindex="-1"></a>sleepy_or_primates <span class="op">=</span> msleep[(msleep.order <span class="op">==</span> <span class="st">&quot;Primates&quot;</span>) <span class="op">|</span> (msleep.sleep_total <span class="op">&gt;</span> <span class="dv">10</span>)]</span>
+<span id="cb12-2"><a href="how-to-tidy-data.html#cb12-2" aria-hidden="true" tabindex="-1"></a>sleepy_or_primates.head()</span></code></pre></div>
+<table>
+<colgroup>
+<col width="2%" />
+<col width="18%" />
+<col width="7%" />
+<col width="5%" />
+<col width="9%" />
+<col width="10%" />
+<col width="9%" />
+<col width="8%" />
+<col width="9%" />
+<col width="5%" />
+<col width="7%" />
+<col width="6%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="right"></th>
+<th align="left">name</th>
+<th align="left">genus</th>
+<th align="left">vore</th>
+<th align="left">order</th>
+<th align="left">conservation</th>
+<th align="right">sleep_total</th>
+<th align="right">sleep_rem</th>
+<th align="right">sleep_cycle</th>
+<th align="right">awake</th>
+<th align="right">brainwt</th>
+<th align="right">bodywt</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0</td>
+<td align="left">Cheetah</td>
+<td align="left">Acinonyx</td>
+<td align="left">carni</td>
+<td align="left">Carnivora</td>
+<td align="left">lc</td>
+<td align="right">12.1</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">11.9</td>
+<td align="right">nan</td>
+<td align="right">50</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="left">Owl monkey</td>
+<td align="left">Aotus</td>
+<td align="left">omni</td>
+<td align="left">Primates</td>
+<td align="left">nan</td>
+<td align="right">17</td>
+<td align="right">1.8</td>
+<td align="right">nan</td>
+<td align="right">7</td>
+<td align="right">0.0155</td>
+<td align="right">0.48</td>
+</tr>
+<tr class="odd">
+<td align="right">2</td>
+<td align="left">Mountain beaver</td>
+<td align="left">Aplodontia</td>
+<td align="left">herbi</td>
+<td align="left">Rodentia</td>
+<td align="left">nt</td>
+<td align="right">14.4</td>
+<td align="right">2.4</td>
+<td align="right">nan</td>
+<td align="right">9.6</td>
+<td align="right">nan</td>
+<td align="right">1.35</td>
+</tr>
+<tr class="even">
+<td align="right">3</td>
+<td align="left">Greater short-tailed shrew</td>
+<td align="left">Blarina</td>
+<td align="left">omni</td>
+<td align="left">Soricomorpha</td>
+<td align="left">lc</td>
+<td align="right">14.9</td>
+<td align="right">2.3</td>
+<td align="right">0.133333</td>
+<td align="right">9.1</td>
+<td align="right">0.00029</td>
+<td align="right">0.019</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="left">Three-toed sloth</td>
+<td align="left">Bradypus</td>
+<td align="left">herbi</td>
+<td align="left">Pilosa</td>
+<td align="left">nan</td>
+<td align="right">14.4</td>
+<td align="right">2.2</td>
+<td align="right">0.766667</td>
+<td align="right">9.6</td>
+<td align="right">nan</td>
+<td align="right">3.85</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="selecting-columns" class="section level3" number="8.2.2">
+<h3><span class="header-section-number">8.2.2</span> Selecting Columns</h3>
+<p>While indexing with <code>[...]</code> typically operates on rows, it can also filter your dataset to only include the columns you’re interested in. To select columns so that your dataset only includes variables you’re interested in, you simply index the data frame with a list of column names.</p>
+<p>Let’s start with the code we just wrote to only include primates who sleep a lot. What if we only want to include the first column (the name of the mammal) and the sleep information (included in the columns <code>sleep_total</code>, <code>sleep_rem</code>, and <code>sleep_cycle</code>)?</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="how-to-tidy-data.html#cb13-1" aria-hidden="true" tabindex="-1"></a>subset <span class="op">=</span> sleepy_primates[[<span class="st">&quot;name&quot;</span>, <span class="st">&quot;sleep_total&quot;</span>, <span class="st">&quot;sleep_rem&quot;</span>, <span class="st">&quot;sleep_cycle&quot;</span>]]</span>
+<span id="cb13-2"><a href="how-to-tidy-data.html#cb13-2" aria-hidden="true" tabindex="-1"></a>subset.head()</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right"></th>
+<th align="left">name</th>
+<th align="right">sleep_total</th>
+<th align="right">sleep_rem</th>
+<th align="right">sleep_cycle</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left">Owl monkey</td>
+<td align="right">17</td>
+<td align="right">1.8</td>
+<td align="right">nan</td>
+</tr>
+<tr class="even">
+<td align="right">25</td>
+<td align="left">Patas monkey</td>
+<td align="right">10.9</td>
+<td align="right">1.1</td>
+<td align="right">nan</td>
+</tr>
+<tr class="odd">
+<td align="right">37</td>
+<td align="left">Macaque</td>
+<td align="right">10.1</td>
+<td align="right">1.2</td>
+<td align="right">0.75</td>
+</tr>
+<tr class="even">
+<td align="right">44</td>
+<td align="left">Slow loris</td>
+<td align="right">11</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+</tr>
+<tr class="odd">
+<td align="right">55</td>
+<td align="left">Potto</td>
+<td align="right">11</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+</tr>
+</tbody>
+</table>
+<p>After indexing with the column names, we see that we still have the five rows we filtered to before, but we only have the four desired columns.</p>
+</div>
+<div id="renaming-columns" class="section level3" number="8.2.3">
+<h3><span class="header-section-number">8.2.3</span> Renaming Columns</h3>
+<p>You can use the <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.rename.html"><code>rename</code></a> method to change column names. In the following example, we remove the <code>sleep_</code> from the beginning of column names.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="how-to-tidy-data.html#cb14-1" aria-hidden="true" tabindex="-1"></a>subset.rename({<span class="st">&quot;total&quot;</span>: <span class="st">&quot;sleep_total&quot;</span>, <span class="st">&quot;rem&quot;</span>: <span class="st">&quot;sleep_rem&quot;</span>, <span class="st">&quot;cycle&quot;</span>: <span class="st">&quot;sleep_cycle&quot;</span>})</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right"></th>
+<th align="left">name</th>
+<th align="right">sleep_total</th>
+<th align="right">sleep_rem</th>
+<th align="right">sleep_cycle</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left">Owl monkey</td>
+<td align="right">17</td>
+<td align="right">1.8</td>
+<td align="right">nan</td>
+</tr>
+<tr class="even">
+<td align="right">25</td>
+<td align="left">Patas monkey</td>
+<td align="right">10.9</td>
+<td align="right">1.1</td>
+<td align="right">nan</td>
+</tr>
+<tr class="odd">
+<td align="right">37</td>
+<td align="left">Macaque</td>
+<td align="right">10.1</td>
+<td align="right">1.2</td>
+<td align="right">0.75</td>
+</tr>
+<tr class="even">
+<td align="right">44</td>
+<td align="left">Slow loris</td>
+<td align="right">11</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+</tr>
+<tr class="odd">
+<td align="right">55</td>
+<td align="left">Potto</td>
+<td align="right">11</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+</tr>
+</tbody>
+</table>
+<p>The data remain unchanged, however. Treat renaming columns with caution because having different names for the same data in different parts of your code can be confusing. Using <code>rename</code> will only change the column names, but it will not filter out any columns.</p>
+</div>
+</div>
+<div id="reordering" class="section level2" number="8.3">
+<h2><span class="header-section-number">8.3</span> Reordering</h2>
+<p>In addition to filtering rows and columns, often, you’ll want the data arranged in a particular order. It may order the columns in a logical way, or it could be to sort the data so that the data are sorted by value, with those having the smallest value in the first row and the largest value in the last row. All of this can be achieved with a few simple functions.</p>
+<div id="reordering-columns" class="section level3" number="8.3.1">
+<h3><span class="header-section-number">8.3.1</span> Reordering Columns</h3>
+<p>Using our example from above, if you wanted <code>sleep_rem</code> to be the first sleep column and <code>sleep_total</code> to be the last column, all you have to do is reorder the column names in the list.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="how-to-tidy-data.html#cb15-1" aria-hidden="true" tabindex="-1"></a>reordered_columns <span class="op">=</span> sleepy_primates[[<span class="st">&quot;name&quot;</span>, <span class="st">&quot;sleep_rem&quot;</span>, <span class="st">&quot;sleep_cycle&quot;</span>, <span class="st">&quot;sleep_total&quot;</span>]]</span>
+<span id="cb15-2"><a href="how-to-tidy-data.html#cb15-2" aria-hidden="true" tabindex="-1"></a>reordered_columns.head()</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right"></th>
+<th align="left">name</th>
+<th align="right">sleep_rem</th>
+<th align="right">sleep_cycle</th>
+<th align="right">sleep_total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left">Owl monkey</td>
+<td align="right">1.8</td>
+<td align="right">nan</td>
+<td align="right">17</td>
+</tr>
+<tr class="even">
+<td align="right">25</td>
+<td align="left">Patas monkey</td>
+<td align="right">1.1</td>
+<td align="right">nan</td>
+<td align="right">10.9</td>
+</tr>
+<tr class="odd">
+<td align="right">37</td>
+<td align="left">Macaque</td>
+<td align="right">1.2</td>
+<td align="right">0.75</td>
+<td align="right">10.1</td>
+</tr>
+<tr class="even">
+<td align="right">44</td>
+<td align="left">Slow loris</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">11</td>
+</tr>
+<tr class="odd">
+<td align="right">55</td>
+<td align="left">Potto</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">11</td>
+</tr>
+</tbody>
+</table>
+<p>Here we see that <code>name</code> is displayed first followed by <code>sleep_rem</code>, <code>sleep_cycle</code>, and <code>sleep_total</code>, just as it was specified in the list of column names.</p>
+</div>
+<div id="reordering-rows" class="section level3" number="8.3.2">
+<h3><span class="header-section-number">8.3.2</span> Reordering Rows</h3>
+<p>Rows can also be reordered. To reorder a variable in ascending order (from smallest to largest), you’ll want to use the <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sort_values.html"><code>sort_values</code></a> method. Continuing on from our example above, to now sort our rows by the amount of total sleep each mammal gets, we would use the following syntax.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="how-to-tidy-data.html#cb16-1" aria-hidden="true" tabindex="-1"></a>reordered_columns.sort_values(<span class="st">&quot;sleep_total&quot;</span>)</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right"></th>
+<th align="left">name</th>
+<th align="right">sleep_rem</th>
+<th align="right">sleep_cycle</th>
+<th align="right">sleep_total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">37</td>
+<td align="left">Macaque</td>
+<td align="right">1.2</td>
+<td align="right">0.75</td>
+<td align="right">10.1</td>
+</tr>
+<tr class="even">
+<td align="right">25</td>
+<td align="left">Patas monkey</td>
+<td align="right">1.1</td>
+<td align="right">nan</td>
+<td align="right">10.9</td>
+</tr>
+<tr class="odd">
+<td align="right">44</td>
+<td align="left">Slow loris</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">11</td>
+</tr>
+<tr class="even">
+<td align="right">55</td>
+<td align="left">Potto</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">11</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left">Owl monkey</td>
+<td align="right">1.8</td>
+<td align="right">nan</td>
+<td align="right">17</td>
+</tr>
+</tbody>
+</table>
+<p>To instead sort the data in descending (largest to smallest) order, simply pass the argument <code>ascending=False</code> to the <code>sort_values</code> method like so.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="how-to-tidy-data.html#cb17-1" aria-hidden="true" tabindex="-1"></a>reordered_columns.sort_values(<span class="st">&quot;sleep_total&quot;</span>, ascending<span class="op">=</span><span class="va">False</span>)</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right"></th>
+<th align="left">name</th>
+<th align="right">sleep_rem</th>
+<th align="right">sleep_cycle</th>
+<th align="right">sleep_total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left">Owl monkey</td>
+<td align="right">1.8</td>
+<td align="right">nan</td>
+<td align="right">17</td>
+</tr>
+<tr class="even">
+<td align="right">44</td>
+<td align="left">Slow loris</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">11</td>
+</tr>
+<tr class="odd">
+<td align="right">55</td>
+<td align="left">Potto</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">11</td>
+</tr>
+<tr class="even">
+<td align="right">25</td>
+<td align="left">Patas monkey</td>
+<td align="right">1.1</td>
+<td align="right">nan</td>
+<td align="right">10.9</td>
+</tr>
+<tr class="odd">
+<td align="right">37</td>
+<td align="left">Macaque</td>
+<td align="right">1.2</td>
+<td align="right">0.75</td>
+<td align="right">10.1</td>
+</tr>
+</tbody>
+</table>
+<p><code>sort_values</code> can also be used to order non-numeric variables. For example, <code>sort_values</code> will sort character vectors alphabetically.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="how-to-tidy-data.html#cb18-1" aria-hidden="true" tabindex="-1"></a>reordered_columns.sort_values(<span class="st">&quot;name&quot;</span>)</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right"></th>
+<th align="left">name</th>
+<th align="right">sleep_rem</th>
+<th align="right">sleep_cycle</th>
+<th align="right">sleep_total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">37</td>
+<td align="left">Macaque</td>
+<td align="right">1.2</td>
+<td align="right">0.75</td>
+<td align="right">10.1</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="left">Owl monkey</td>
+<td align="right">1.8</td>
+<td align="right">nan</td>
+<td align="right">17</td>
+</tr>
+<tr class="odd">
+<td align="right">25</td>
+<td align="left">Patas monkey</td>
+<td align="right">1.1</td>
+<td align="right">nan</td>
+<td align="right">10.9</td>
+</tr>
+<tr class="even">
+<td align="right">55</td>
+<td align="left">Potto</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">11</td>
+</tr>
+<tr class="odd">
+<td align="right">44</td>
+<td align="left">Slow loris</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">11</td>
+</tr>
+</tbody>
+</table>
+<p>If you would like to reorder rows based on information in multiple columns, you can specify them as a list of column names. This is useful if you have repeated labels in one column and want to sort within a category based on information in another column. In the example here, if there were repeated primates, this would sort the repeats based on their total sleep.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="how-to-tidy-data.html#cb19-1" aria-hidden="true" tabindex="-1"></a>reordered_columns.sort_values([<span class="st">&quot;name&quot;</span>, <span class="st">&quot;sleep_total&quot;</span>])</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right"></th>
+<th align="left">name</th>
+<th align="right">sleep_rem</th>
+<th align="right">sleep_cycle</th>
+<th align="right">sleep_total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">37</td>
+<td align="left">Macaque</td>
+<td align="right">1.2</td>
+<td align="right">0.75</td>
+<td align="right">10.1</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="left">Owl monkey</td>
+<td align="right">1.8</td>
+<td align="right">nan</td>
+<td align="right">17</td>
+</tr>
+<tr class="odd">
+<td align="right">25</td>
+<td align="left">Patas monkey</td>
+<td align="right">1.1</td>
+<td align="right">nan</td>
+<td align="right">10.9</td>
+</tr>
+<tr class="even">
+<td align="right">55</td>
+<td align="left">Potto</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">11</td>
+</tr>
+<tr class="odd">
+<td align="right">44</td>
+<td align="left">Slow loris</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">11</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="creating-new-columns" class="section level2" number="8.4">
+<h2><span class="header-section-number">8.4</span> Creating new columns</h2>
+<p>You will often find when working with data that you need an additional column. For example, if you had two datasets you wanted to combine, you may want to make a new column in each dataset called <code>dataset</code>. In one dataset you may put <code>datasetA</code> in each row. In the second dataset, you could put <code>datasetB</code>. This way, once you combined the data, you would be able to keep track of which dataset each row came from originally. More often, however, you’ll likely want to create a new column that calculates a new variable based on information in a column you already have. For example, in our mammal sleep dataset, <code>sleep_total</code> is in hours. What if you wanted to have that information in minutes? You could create a new column with this very information!</p>
+<p>Returning to our <code>msleep</code> dataset, after filtering and re-ordering, we can create a new column. We will calculate the number of minutes each mammal sleeps by multiplying the number of hours each animal sleeps by 60 minutes. A new column can be created by indexing the data frame with a column name and assigning to it.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="how-to-tidy-data.html#cb20-1" aria-hidden="true" tabindex="-1"></a>reordered_columns[<span class="st">&quot;sleep_total_min&quot;</span>] <span class="op">=</span> reordered_columns.sleep_total <span class="op">*</span> <span class="dv">60</span></span>
+<span id="cb20-2"><a href="how-to-tidy-data.html#cb20-2" aria-hidden="true" tabindex="-1"></a>reordered_columns</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right"></th>
+<th align="left">name</th>
+<th align="right">sleep_rem</th>
+<th align="right">sleep_cycle</th>
+<th align="right">sleep_total</th>
+<th align="right">sleep_total_min</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left">Owl monkey</td>
+<td align="right">1.8</td>
+<td align="right">nan</td>
+<td align="right">17</td>
+<td align="right">1020</td>
+</tr>
+<tr class="even">
+<td align="right">25</td>
+<td align="left">Patas monkey</td>
+<td align="right">1.1</td>
+<td align="right">nan</td>
+<td align="right">10.9</td>
+<td align="right">654</td>
+</tr>
+<tr class="odd">
+<td align="right">37</td>
+<td align="left">Macaque</td>
+<td align="right">1.2</td>
+<td align="right">0.75</td>
+<td align="right">10.1</td>
+<td align="right">606</td>
+</tr>
+<tr class="even">
+<td align="right">44</td>
+<td align="left">Slow loris</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">11</td>
+<td align="right">660</td>
+</tr>
+<tr class="odd">
+<td align="right">55</td>
+<td align="left">Potto</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">11</td>
+<td align="right">660</td>
+</tr>
+</tbody>
+</table>
+<p>Importantly, creating a new column in this way will change or <em>mutate</em> the data frame. In contrast, all the previous methods like <code>sort_values</code>, <code>rename</code>, and indexing with column names to select a subset created a <em>new</em> data frame each time. The original data frame was unchanged. For example, the data frame <code>msleep</code> we started with still contains 83 rows and 11 columns.</p>
+</div>
+<div id="separating-columns" class="section level2" number="8.5">
+<h2><span class="header-section-number">8.5</span> Separating Columns</h2>
+<p>Sometimes multiple pieces of information are merged within a single column even though it would be more useful during analysis to have those pieces of information in separate columns. To demonstrate, we’ll now move from the <code>msleep</code> dataset to talking about another dataset <a href="https://raw.githubusercontent.com/suzanbaert/Dplyr_Tutorials/master/conservation_explanation.csv"><code>conservation_explanation.csv</code></a> that includes information about conservation abbreviations in a single column.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="how-to-tidy-data.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Download and read the data.</span></span>
+<span id="cb21-2"><a href="how-to-tidy-data.html#cb21-2" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">&quot;https://raw.githubusercontent.com/suzanbaert/Dplyr_Tutorials/master/conservation_explanation.csv&quot;</span></span>
+<span id="cb21-3"><a href="how-to-tidy-data.html#cb21-3" aria-hidden="true" tabindex="-1"></a>conservation <span class="op">=</span> pd.read_csv(url)</span>
+<span id="cb21-4"><a href="how-to-tidy-data.html#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="how-to-tidy-data.html#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect the first few rows.</span></span>
+<span id="cb21-6"><a href="how-to-tidy-data.html#cb21-6" aria-hidden="true" tabindex="-1"></a>conservation.head()</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right"></th>
+<th align="left">conservation abbreviation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0</td>
+<td align="left">EX = Extinct</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="left">EW = Extinct in the wild</td>
+</tr>
+<tr class="odd">
+<td align="right">2</td>
+<td align="left">CR = Critically Endangered</td>
+</tr>
+<tr class="even">
+<td align="right">3</td>
+<td align="left">EN = Endangered</td>
+</tr>
+<tr class="odd">
+<td align="right">4</td>
+<td align="left">VU = Vulnerable</td>
+</tr>
+</tbody>
+</table>
+<p>In this dataset, we see that there is a single column that includes <em>both</em> the abbreviation for the conservation term as well as what that abbreviation means. Recall that this violates one of the tidy data principles covered in the first lesson: Put just one thing in a cell. To work with these data, you could imagine that you may want these two pieces of information (the abbreviation and the description) in two different columns. We’ll use the <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.str.split.html"><code>str.split</code></a> method of the column to separate the abbreviation and description.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="how-to-tidy-data.html#cb22-1" aria-hidden="true" tabindex="-1"></a>separated <span class="op">=</span> conservation[<span class="st">&quot;conservation abbreviation&quot;</span>].<span class="bu">str</span>.split(<span class="st">&quot; = &quot;</span>, expand<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb22-2"><a href="how-to-tidy-data.html#cb22-2" aria-hidden="true" tabindex="-1"></a>separated.head()</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right"></th>
+<th align="left">0</th>
+<th align="left">1</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0</td>
+<td align="left">EX</td>
+<td align="left">Extinct</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="left">EW</td>
+<td align="left">Extinct in the wild</td>
+</tr>
+<tr class="odd">
+<td align="right">2</td>
+<td align="left">CR</td>
+<td align="left">Critically Endangered</td>
+</tr>
+<tr class="even">
+<td align="right">3</td>
+<td align="left">EN</td>
+<td align="left">Endangered</td>
+</tr>
+<tr class="odd">
+<td align="right">4</td>
+<td align="left">VU</td>
+<td align="left">Vulnerable</td>
+</tr>
+</tbody>
+</table>
+<p>We selected the column using indexing notation <code>[...]</code> instead of simply writing <code>conservation.conservation abbreviation</code> because the column name contains a space. This is another violation of tidy data! Variable names should have underscores, not spaces! The <code>str.split</code> method requires the characters that currently separate the pieces of information <code>=</code> as its first argument. Setting <code>expand=True</code> tells <code>str.split</code> to expand the results of splitting into separate columns. You’ll learn more about working with strings in a <a href="05-working-with-strings.md">later section</a>.</p>
+<p>However, the separated data frame does not have sensible column names. We can fix that by explicitly setting the column names.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb23-1"><a href="how-to-tidy-data.html#cb23-1" aria-hidden="true" tabindex="-1"></a>separated.columns <span class="op">=</span> [<span class="st">&quot;abbreviation&quot;</span>, <span class="st">&quot;conservation&quot;</span>]</span>
+<span id="cb23-2"><a href="how-to-tidy-data.html#cb23-2" aria-hidden="true" tabindex="-1"></a>separated.head()</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right"></th>
+<th align="left">abbreviation</th>
+<th align="left">conservation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0</td>
+<td align="left">EX</td>
+<td align="left">Extinct</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="left">EW</td>
+<td align="left">Extinct in the wild</td>
+</tr>
+<tr class="odd">
+<td align="right">2</td>
+<td align="left">CR</td>
+<td align="left">Critically Endangered</td>
+</tr>
+<tr class="even">
+<td align="right">3</td>
+<td align="left">EN</td>
+<td align="left">Endangered</td>
+</tr>
+<tr class="odd">
+<td align="right">4</td>
+<td align="left">VU</td>
+<td align="left">Vulnerable</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="merging-columns" class="section level2" number="8.6">
+<h2><span class="header-section-number">8.6</span> Merging Columns</h2>
+<p>The opposite of <code>split</code> is to concatenate values from different columns which you can achieve using the <code>+</code> operator. Using the code forming the two separate columns above, we can add on an extra line of code to re-join these separate columns, returning what we started with.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="how-to-tidy-data.html#cb24-1" aria-hidden="true" tabindex="-1"></a>separated[<span class="st">&quot;conservation_abbreviation&quot;</span>] <span class="op">=</span> separated.abbreviation <span class="op">+</span> <span class="st">&quot; = &quot;</span> <span class="op">+</span> separated.conservation</span>
+<span id="cb24-2"><a href="how-to-tidy-data.html#cb24-2" aria-hidden="true" tabindex="-1"></a>separated.head()</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right"></th>
+<th align="left">abbreviation</th>
+<th align="left">conservation</th>
+<th align="left">conservation_abbreviation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0</td>
+<td align="left">EX</td>
+<td align="left">Extinct</td>
+<td align="left">EX = Extinct</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="left">EW</td>
+<td align="left">Extinct in the wild</td>
+<td align="left">EW = Extinct in the wild</td>
+</tr>
+<tr class="odd">
+<td align="right">2</td>
+<td align="left">CR</td>
+<td align="left">Critically Endangered</td>
+<td align="left">CR = Critically Endangered</td>
+</tr>
+<tr class="even">
+<td align="right">3</td>
+<td align="left">EN</td>
+<td align="left">Endangered</td>
+<td align="left">EN = Endangered</td>
+</tr>
+<tr class="odd">
+<td align="right">4</td>
+<td align="left">VU</td>
+<td align="left">Vulnerable</td>
+<td align="left">VU = Vulnerable</td>
+</tr>
+</tbody>
+</table>
+<p>Because one of the principles of tidy data is to only ever have one thing in each column, you’ll rarely use concatenation in practice.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb25-1"><a href="how-to-tidy-data.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(_.to_markdown())</span></code></pre></div>
+</div>
+<div id="combining-data-across-data-frames" class="section level2" number="8.7">
+<h2><span class="header-section-number">8.7</span> Combining data across data frames</h2>
+<p>There is often information stored in two separate data frames that you’ll want in a single data frame. There are <em>many</em> different ways to join separate data frames. They are discussed in more detail in <a href="https://pandas.pydata.org/docs/user_guide/merging.html">this tutorial</a>. Here, we’ll demonstrate how to use the <a href="https://pandas.pydata.org/docs/reference/api/pandas.merge.html"><code>merge</code></a> function to perform a “left join”, as this is used frequently.</p>
+<p>Let’s try to combine the information from the two different datasets we’ve used in this lesson. We have <code>msleep</code> and <code>separated</code>. <code>msleep</code> contains a column called <code>conservation</code>. This column includes lowercase abbreviations that overlap with the uppercase abbreviations in the <code>abbreviation</code> column in the <code>separated</code> dataset. To handle the fact that in one dataset the abbreviations are lowercase and the other they are uppercase, we’ll use <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.str.upper.html"><code>str.upper</code></a> to take all the lowercase abbreviations to uppercase abbreviations.</p>
+<p>We’ll then use <code>merge</code> to perform a left join which takes all of the rows in the first dataset <code>msleep</code> and incorporates information from the second dataset <code>separated</code> if information in the second dataset is available. The <code>left_on</code> and <code>right_on</code> arguments specify the columns to use in the <code>left</code> (<code>msleep</code>) and <code>right</code> datasets (<code>separated</code>) to merge or join the two datasets. Setting <code>how="left"</code> tells <code>merge</code> to perform a <code>left</code> join. This means if there is no information in the <code>right</code> dataset, the result will have <code>NA</code> where data are not available. Specifically, for rows where conservation is “DOMESTICATED” below, the <code>description</code> column will have NA because “DOMESTICATED”” is not an abbreviation in the <code>conserve</code> dataset.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb26-1"><a href="how-to-tidy-data.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert conservation abbreviation to upper case.</span></span>
+<span id="cb26-2"><a href="how-to-tidy-data.html#cb26-2" aria-hidden="true" tabindex="-1"></a>msleep.conservation <span class="op">=</span> msleep.conservation.<span class="bu">str</span>.upper()</span>
+<span id="cb26-3"><a href="how-to-tidy-data.html#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Merge the data.</span></span>
+<span id="cb26-4"><a href="how-to-tidy-data.html#cb26-4" aria-hidden="true" tabindex="-1"></a>merged <span class="op">=</span> pd.merge(msleep, separated, left_on<span class="op">=</span><span class="st">&quot;conservation&quot;</span>, right_on<span class="op">=</span><span class="st">&quot;abbreviation&quot;</span>, how<span class="op">=</span><span class="st">&quot;left&quot;</span>)</span>
+<span id="cb26-5"><a href="how-to-tidy-data.html#cb26-5" aria-hidden="true" tabindex="-1"></a>merged.head()</span></code></pre></div>
+<table>
+<colgroup>
+<col width="1%" />
+<col width="12%" />
+<col width="5%" />
+<col width="3%" />
+<col width="6%" />
+<col width="8%" />
+<col width="6%" />
+<col width="5%" />
+<col width="6%" />
+<col width="4%" />
+<col width="5%" />
+<col width="4%" />
+<col width="7%" />
+<col width="8%" />
+<col width="12%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="right"></th>
+<th align="left">name</th>
+<th align="left">genus</th>
+<th align="left">vore</th>
+<th align="left">order</th>
+<th align="left">conservation_x</th>
+<th align="right">sleep_total</th>
+<th align="right">sleep_rem</th>
+<th align="right">sleep_cycle</th>
+<th align="right">awake</th>
+<th align="right">brainwt</th>
+<th align="right">bodywt</th>
+<th align="left">abbreviation</th>
+<th align="left">conservation_y</th>
+<th align="left">conservation_abbreviation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0</td>
+<td align="left">Cheetah</td>
+<td align="left">Acinonyx</td>
+<td align="left">carni</td>
+<td align="left">Carnivora</td>
+<td align="left">LC</td>
+<td align="right">12.1</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">11.9</td>
+<td align="right">nan</td>
+<td align="right">50</td>
+<td align="left">LC</td>
+<td align="left">Least Concern</td>
+<td align="left">LC = Least Concern</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="left">Owl monkey</td>
+<td align="left">Aotus</td>
+<td align="left">omni</td>
+<td align="left">Primates</td>
+<td align="left">nan</td>
+<td align="right">17</td>
+<td align="right">1.8</td>
+<td align="right">nan</td>
+<td align="right">7</td>
+<td align="right">0.0155</td>
+<td align="right">0.48</td>
+<td align="left">nan</td>
+<td align="left">nan</td>
+<td align="left">nan</td>
+</tr>
+<tr class="odd">
+<td align="right">2</td>
+<td align="left">Mountain beaver</td>
+<td align="left">Aplodontia</td>
+<td align="left">herbi</td>
+<td align="left">Rodentia</td>
+<td align="left">NT</td>
+<td align="right">14.4</td>
+<td align="right">2.4</td>
+<td align="right">nan</td>
+<td align="right">9.6</td>
+<td align="right">nan</td>
+<td align="right">1.35</td>
+<td align="left">NT</td>
+<td align="left">Near Threatened</td>
+<td align="left">NT = Near Threatened</td>
+</tr>
+<tr class="even">
+<td align="right">3</td>
+<td align="left">Greater short-tailed shrew</td>
+<td align="left">Blarina</td>
+<td align="left">omni</td>
+<td align="left">Soricomorpha</td>
+<td align="left">LC</td>
+<td align="right">14.9</td>
+<td align="right">2.3</td>
+<td align="right">0.133333</td>
+<td align="right">9.1</td>
+<td align="right">0.00029</td>
+<td align="right">0.019</td>
+<td align="left">LC</td>
+<td align="left">Least Concern</td>
+<td align="left">LC = Least Concern</td>
+</tr>
+<tr class="odd">
+<td align="right">4</td>
+<td align="left">Cow</td>
+<td align="left">Bos</td>
+<td align="left">herbi</td>
+<td align="left">Artiodactyla</td>
+<td align="left">DOMESTICATED</td>
+<td align="right">4</td>
+<td align="right">0.7</td>
+<td align="right">0.666667</td>
+<td align="right">20</td>
+<td align="right">0.423</td>
+<td align="right">600</td>
+<td align="left">nan</td>
+<td align="left">nan</td>
+<td align="left">nan</td>
+</tr>
+</tbody>
+</table>
+<p>It’s important to note that there are many other ways to join data, which are covered in more detail in this <a href="https://pandas.pydata.org/docs/user_guide/merging.html">tutorial</a>. For now, it’s important to know that joining datasets is done easily using <code>merge</code>. As you join data frames in your own work, it’s a good idea to refer back to this tutorial for assistance.</p>
+</div>
+<div id="summarizing-data" class="section level2" number="8.8">
+<h2><span class="header-section-number">8.8</span> Summarizing Data</h2>
+<div id="describe" class="section level3" number="8.8.1">
+<h3><span class="header-section-number">8.8.1</span> <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html"><code>describe</code></a></h3>
+<p>The <code>describe</code> method is similar to <code>info</code>. But instead of telling you about the <em>type</em> of data in the data frame, it provides summary statistics for columns containing numbers.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb27-1"><a href="how-to-tidy-data.html#cb27-1" aria-hidden="true" tabindex="-1"></a>msleep.describe()</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">sleep_total</th>
+<th align="right">sleep_rem</th>
+<th align="right">sleep_cycle</th>
+<th align="right">awake</th>
+<th align="right">brainwt</th>
+<th align="right">bodywt</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">count</td>
+<td align="right">83</td>
+<td align="right">61</td>
+<td align="right">32</td>
+<td align="right">83</td>
+<td align="right">56</td>
+<td align="right">83</td>
+</tr>
+<tr class="even">
+<td align="left">mean</td>
+<td align="right">10.4337</td>
+<td align="right">1.87541</td>
+<td align="right">0.439583</td>
+<td align="right">13.5675</td>
+<td align="right">0.281581</td>
+<td align="right">166.136</td>
+</tr>
+<tr class="odd">
+<td align="left">std</td>
+<td align="right">4.45036</td>
+<td align="right">1.29829</td>
+<td align="right">0.35868</td>
+<td align="right">4.45209</td>
+<td align="right">0.976414</td>
+<td align="right">786.84</td>
+</tr>
+<tr class="even">
+<td align="left">min</td>
+<td align="right">1.9</td>
+<td align="right">0.1</td>
+<td align="right">0.116667</td>
+<td align="right">4.1</td>
+<td align="right">0.00014</td>
+<td align="right">0.005</td>
+</tr>
+<tr class="odd">
+<td align="left">25%</td>
+<td align="right">7.85</td>
+<td align="right">0.9</td>
+<td align="right">0.183333</td>
+<td align="right">10.25</td>
+<td align="right">0.0029</td>
+<td align="right">0.174</td>
+</tr>
+<tr class="even">
+<td align="left">50%</td>
+<td align="right">10.1</td>
+<td align="right">1.5</td>
+<td align="right">0.333333</td>
+<td align="right">13.9</td>
+<td align="right">0.0124</td>
+<td align="right">1.67</td>
+</tr>
+<tr class="odd">
+<td align="left">75%</td>
+<td align="right">13.75</td>
+<td align="right">2.4</td>
+<td align="right">0.579167</td>
+<td align="right">16.15</td>
+<td align="right">0.1255</td>
+<td align="right">41.75</td>
+</tr>
+<tr class="even">
+<td align="left">max</td>
+<td align="right">19.9</td>
+<td align="right">6.6</td>
+<td align="right">1.5</td>
+<td align="right">22.1</td>
+<td align="right">5.712</td>
+<td align="right">6654</td>
+</tr>
+</tbody>
+</table>
+<p>If you want to learn about non-numeric data, pass <code>include="object"</code> to the describe method.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb28-1"><a href="how-to-tidy-data.html#cb28-1" aria-hidden="true" tabindex="-1"></a>msleep.describe(include<span class="op">=</span><span class="st">&quot;object&quot;</span>)</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">name</th>
+<th align="left">genus</th>
+<th align="left">vore</th>
+<th align="left">order</th>
+<th align="left">conservation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">count</td>
+<td align="left">83</td>
+<td align="left">83</td>
+<td align="left">76</td>
+<td align="left">83</td>
+<td align="left">54</td>
+</tr>
+<tr class="even">
+<td align="left">unique</td>
+<td align="left">83</td>
+<td align="left">77</td>
+<td align="left">4</td>
+<td align="left">19</td>
+<td align="left">6</td>
+</tr>
+<tr class="odd">
+<td align="left">top</td>
+<td align="left">Cheetah</td>
+<td align="left">Panthera</td>
+<td align="left">herbi</td>
+<td align="left">Rodentia</td>
+<td align="left">LC</td>
+</tr>
+<tr class="even">
+<td align="left">freq</td>
+<td align="left">1</td>
+<td align="left">3</td>
+<td align="left">32</td>
+<td align="left">22</td>
+<td align="left">27</td>
+</tr>
+</tbody>
+</table>
+<p>The output will tell you about the number of non-null values (<code>count</code>), the number of unique values (<code>unique</code>), the most frequent value (<code>top</code>), and the number of times the most frequent value appeared in the dataset (<code>freq</code>). If there is a tie between the most frequent values, a random value will be returned (<code>Cheetah</code> in this case for the <code>name</code> column).</p>
+<p>If you are interested in the frequency of values in a particular column, you can use <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.value_counts.html"><code>value_counts</code></a> to learn more.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb29-1"><a href="how-to-tidy-data.html#cb29-1" aria-hidden="true" tabindex="-1"></a>msleep.order.value_counts()</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">order</th>
+<th align="right">count</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Rodentia</td>
+<td align="right">22</td>
+</tr>
+<tr class="even">
+<td align="left">Carnivora</td>
+<td align="right">12</td>
+</tr>
+<tr class="odd">
+<td align="left">Primates</td>
+<td align="right">12</td>
+</tr>
+<tr class="even">
+<td align="left">Artiodactyla</td>
+<td align="right">6</td>
+</tr>
+<tr class="odd">
+<td align="left">Soricomorpha</td>
+<td align="right">5</td>
+</tr>
+<tr class="even">
+<td align="left">Perissodactyla</td>
+<td align="right">3</td>
+</tr>
+<tr class="odd">
+<td align="left">Cetacea</td>
+<td align="right">3</td>
+</tr>
+<tr class="even">
+<td align="left">Hyracoidea</td>
+<td align="right">3</td>
+</tr>
+<tr class="odd">
+<td align="left">Diprotodontia</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="left">Erinaceomorpha</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="left">Proboscidea</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="left">Chiroptera</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="left">Didelphimorphia</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="left">Cingulata</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="left">Lagomorpha</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">Pilosa</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">Monotremata</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">Afrosoricida</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">Scandentia</td>
+<td align="right">1</td>
+</tr>
+</tbody>
+</table>
+<p>In this example, the order <code>Rodentia</code> appears 22 times and is the most frequently occurring order in the dataset. If you want percentages rather than counts, pass <code>normalize=True</code> to <code>value_counts</code>.</p>
+</div>
+</div>
+<div id="grouping-data" class="section level2" number="8.9">
+<h2><span class="header-section-number">8.9</span> Grouping Data</h2>
+<p>Often, data scientists will want to summarize information in their dataset. You may want to know how many animals are in a dataset. However, more often, you’ll want to know how many animals there are within a group in your dataset. For example, you may want to know how many primates and how many carnivores there are. To do this, grouping your data is necessary. Rather than looking at the total number of individuals, to accomplish this, you first have to group the data by the order of the animals. Then, you count within those groups. Grouping by variables is straightforward using the <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.groupby.html"><code>groupby</code></a> method.</p>
+<div id="groupby" class="section level3" number="8.9.1">
+<h3><span class="header-section-number">8.9.1</span> <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.groupby.html"><code>groupby</code></a></h3>
+<p><code>group_by</code> groups a dataset by one or more variables.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb30-1"><a href="how-to-tidy-data.html#cb30-1" aria-hidden="true" tabindex="-1"></a>groups <span class="op">=</span> msleep.groupby(<span class="st">&quot;order&quot;</span>)</span>
+<span id="cb30-2"><a href="how-to-tidy-data.html#cb30-2" aria-hidden="true" tabindex="-1"></a>groups</span></code></pre></div>
+<pre><code>&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x1356e1600&gt;</code></pre>
+<p>This doesn’t seem very useful at first sight, but we can extract information about the different groups using further methods.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb32-1"><a href="how-to-tidy-data.html#cb32-1" aria-hidden="true" tabindex="-1"></a>groups.order.count()</span></code></pre></div>
+<pre><code>order
+Afrosoricida        1
+Artiodactyla        6
+Carnivora          12
+Cetacea             3
+Chiroptera          2
+Cingulata           2
+Didelphimorphia     2
+Diprotodontia       2
+Erinaceomorpha      2
+Hyracoidea          3
+Lagomorpha          1
+Monotremata         1
+Perissodactyla      3
+Pilosa              1
+Primates           12
+Proboscidea         2
+Rodentia           22
+Scandentia          1
+Soricomorpha        5
+Name: order, dtype: int64</code></pre>
+<p>This code counts the number of non-null values in the <code>order</code> column within each group. The results may differ slightly if you use a different column. For example, there are quite a few values missing in the <code>sleep_cycle</code> column.</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb34-1"><a href="how-to-tidy-data.html#cb34-1" aria-hidden="true" tabindex="-1"></a>groups.sleep_cycle.count()</span></code></pre></div>
+<pre><code>order
+Afrosoricida       0
+Artiodactyla       2
+Carnivora          4
+Cetacea            0
+Chiroptera         2
+Cingulata          1
+Didelphimorphia    1
+Diprotodontia      0
+Erinaceomorpha     1
+Hyracoidea         0
+Lagomorpha         1
+Monotremata        0
+Perissodactyla     2
+Pilosa             1
+Primates           5
+Proboscidea        0
+Rodentia           7
+Scandentia         1
+Soricomorpha       4
+Name: sleep_cycle, dtype: int64</code></pre>
+<p>There are other ways in which the data can be summarized using <code>groupby</code>. In addition to using to <code>count</code> the number of samples within a group, you can also summarize using other helpful functions, such as <code>mean</code>, <code>median</code>, <code>min</code>, or <code>max</code>. For example, if we wanted to calculate the average (mean) total sleep each order of mammal got, we could use the following code.</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb36-1"><a href="how-to-tidy-data.html#cb36-1" aria-hidden="true" tabindex="-1"></a>groups.sleep_total.mean()</span></code></pre></div>
+<pre><code>order
+Afrosoricida       15.600000
+Artiodactyla        4.516667
+Carnivora          10.116667
+Cetacea             4.500000
+Chiroptera         19.800000
+Cingulata          17.750000
+Didelphimorphia    18.700000
+Diprotodontia      12.400000
+Erinaceomorpha     10.200000
+Hyracoidea          5.666667
+Lagomorpha          8.400000
+Monotremata         8.600000
+Perissodactyla      3.466667
+Pilosa             14.400000
+Primates           10.500000
+Proboscidea         3.600000
+Rodentia           12.468182
+Scandentia          8.900000
+Soricomorpha       11.100000
+Name: sleep_total, dtype: float64</code></pre>
+</div>
+</div>
+<div id="conclusion" class="section level2" number="8.10">
+<h2><span class="header-section-number">8.10</span> Conclusion</h2>
+<p>We have gone through a number of ways to work with data in this lesson. Mastering the skills in this lesson will provide you with a number of critical data science skills. Thus, running the examples in this lesson and practicing on your own with other data sets will be essential to succeeding as a data scientist.</p>
+
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>The examples in this lesson and the organization for this lesson were adapted from <a href="https://suzan.rbind.io/">Suzan Baert’s</a> wonderful <code>dplyr</code> tutorials.<a href="how-to-tidy-data.html#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+<hr>
+<center> 
+  <div class="footer">
+      All illustrations <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY. </a>
+      <br>
+      All other materials <a href= "https://creativecommons.org/licenses/by/4.0/"> CC-BY </a> unless noted otherwise.
+  </div>
+</center>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="reshaping-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="plotting-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

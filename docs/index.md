@@ -1,6 +1,6 @@
 ---
 title: " DataTrail - Python "
-date: "December, 2023"
+date: "July, 2024"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: book.bib
