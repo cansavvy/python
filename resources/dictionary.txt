@@ -61,6 +61,7 @@ lc
 Leanpub
 Macaca
 Markua
+Matplotlib
 mentorship
 Mohammed
 Monotremata
@@ -70,6 +71,7 @@ Nayef
 NCI
 NHGRI
 nt
+NumPy
 Nyctibeus
 omni
 OTTR
@@ -86,10 +88,12 @@ Potto
 pre
 Proboscidea
 reproducibility
+Rossum
 RMarkdown
 Rodentia
 Savonen
 Scandentia
+scikit
 sexualized
 socio
 Soricomorpha
