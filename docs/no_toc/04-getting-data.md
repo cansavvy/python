@@ -2,4 +2,6 @@
 
 ## Learning Objectives
 
-<img src="04-getting-data_files/figure-html//1k8uC1rqnGTSbKjBsWvKYgiUUxO1q_VhJCwZQHJNWozA_g29054a882fd_0_52.png" title="Major point!! example image" alt="Major point!! example image" width="480" style="display: block; margin: auto;" />
+```{r, fig.align='center', echo = FALSE, fig.alt= "Major point!! example image"}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1k8uC1rqnGTSbKjBsWvKYgiUUxO1q_VhJCwZQHJNWozA/edit#slide=id.g29054a882fd_0_52")
+```

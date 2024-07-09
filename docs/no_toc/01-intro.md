@@ -1,5 +1,7 @@
 
-
+```{r, include = FALSE}
+ottrpal::set_knitr_image_path()
+```
 
 # Introduction
 

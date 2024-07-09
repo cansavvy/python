@@ -156,7 +156,18 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4" data-path="intro-to-python.html"><a href="intro-to-python.html"><i class="fa fa-check"></i><b>4</b> Intro to Python</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="intro-to-python.html"><a href="intro-to-python.html#learning-objectives-1"><i class="fa fa-check"></i><b>4.1</b> Learning Objectives</a></li>
+<li class="chapter" data-level="4.1" data-path="intro-to-python.html"><a href="intro-to-python.html#main-differences-between-r-and-python"><i class="fa fa-check"></i><b>4.1</b> Main Differences between R and Python</a></li>
+<li class="chapter" data-level="4.2" data-path="intro-to-python.html"><a href="intro-to-python.html#learning-objectives-1"><i class="fa fa-check"></i><b>4.2</b> Learning Objectives</a></li>
+<li class="chapter" data-level="4.3" data-path="intro-to-python.html"><a href="intro-to-python.html#python-syntax-for-r-users"><i class="fa fa-check"></i><b>4.3</b> Python Syntax for R Users</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="intro-to-python.html"><a href="intro-to-python.html#whitespace"><i class="fa fa-check"></i><b>4.3.1</b> Whitespace</a></li>
+<li class="chapter" data-level="4.3.2" data-path="intro-to-python.html"><a href="intro-to-python.html#data-structures"><i class="fa fa-check"></i><b>4.3.2</b> Data Structures</a></li>
+<li class="chapter" data-level="4.3.3" data-path="intro-to-python.html"><a href="intro-to-python.html#iteration-with-for-loops"><i class="fa fa-check"></i><b>4.3.3</b> Iteration with for loops</a></li>
+<li class="chapter" data-level="4.3.4" data-path="intro-to-python.html"><a href="intro-to-python.html#functions"><i class="fa fa-check"></i><b>4.3.4</b> Functions</a></li>
+<li class="chapter" data-level="4.3.5" data-path="intro-to-python.html"><a href="intro-to-python.html#importing-modules"><i class="fa fa-check"></i><b>4.3.5</b> Importing modules</a></li>
+<li class="chapter" data-level="4.3.6" data-path="intro-to-python.html"><a href="intro-to-python.html#learning-more"><i class="fa fa-check"></i><b>4.3.6</b> Learning More</a></li>
+<li class="chapter" data-level="4.3.7" data-path="intro-to-python.html"><a href="intro-to-python.html#references"><i class="fa fa-check"></i><b>4.3.7</b> References</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="getting-data.html"><a href="getting-data.html"><i class="fa fa-check"></i><b>5</b> Getting Data</a>
 <ul>
@@ -225,7 +236,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.1" data-path="getting-the-most-out-of-python.html"><a href="getting-the-most-out-of-python.html#learning-objectives-7"><i class="fa fa-check"></i><b>12.1</b> Learning Objectives</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="about-the-authors.html"><a href="about-the-authors.html"><i class="fa fa-check"></i>About the Authors</a></li>
-<li class="chapter" data-level="13" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>13</b> References</a></li>
+<li class="chapter" data-level="13" data-path="references-1.html"><a href="references-1.html"><i class="fa fa-check"></i><b>13</b> References</a></li>
 <li class="divider"></li>
 <p style="text-align:center;"> <a href="https://github.com/jhudsl/OTTR_Template" target="blank" > This content was published with</a> <a href="https://bookdown.org/" target="blank"> bookdown by: </a> </p>
 <p style="text-align:center;"> <a href="http://jhudatascience.org/"> The Johns Hopkins Data Science Lab </a></p>
@@ -275,13 +286,13 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">8.1</span> Exploring Data</h2>
 <p>We’ll be using a dataset from the <code>ggplot2</code> package called <a href="https://ggplot2.tidyverse.org/reference/msleep.html"><code>msleep</code></a>. This dataset includes sleep times and weights from a number of different mammals. It has 83 rows, with each row including information about a different type of animal, and 11 variables. As each row is a different animal and each column includes information about that animal, this is a <strong>wide</strong> dataset.</p>
 <p>To get an idea of what variables are included in this data frame, you can use the <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.info.html"><code>info</code></a> method. This method summarizes how many rows there are (observations) and how many columns there are (variables). Additionally, it gives you a glimpse into the type of data contained in each column. Specifically, in this data set, we know that the first column is <code>name</code> and that it contains objects (strings, in this case). <code>info</code> also tells you how many non-null (or non-missing) entries there are in each column. For example, there are no missing values in the <code>name</code> columns (83 non-null out of a total of 83 rows), but there are 51 missing values (32 non-null out of a total of 83 rows) in the <code>sleep_cycle</code> column.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="how-to-tidy-data.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb7-2"><a href="how-to-tidy-data.html#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="how-to-tidy-data.html#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="how-to-tidy-data.html#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Download and read the dataset into a pandas data frame.</span></span>
-<span id="cb7-5"><a href="how-to-tidy-data.html#cb7-5" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">&quot;https://raw.githubusercontent.com/tidyverse/ggplot2/main/data-raw/msleep.csv&quot;</span></span>
-<span id="cb7-6"><a href="how-to-tidy-data.html#cb7-6" aria-hidden="true" tabindex="-1"></a>msleep <span class="op">=</span> pd.read_csv(url)</span>
-<span id="cb7-7"><a href="how-to-tidy-data.html#cb7-7" aria-hidden="true" tabindex="-1"></a>msleep.info()</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb23-1"><a href="how-to-tidy-data.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb23-2"><a href="how-to-tidy-data.html#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="how-to-tidy-data.html#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="how-to-tidy-data.html#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Download and read the dataset into a pandas data frame.</span></span>
+<span id="cb23-5"><a href="how-to-tidy-data.html#cb23-5" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">&quot;https://raw.githubusercontent.com/tidyverse/ggplot2/main/data-raw/msleep.csv&quot;</span></span>
+<span id="cb23-6"><a href="how-to-tidy-data.html#cb23-6" aria-hidden="true" tabindex="-1"></a>msleep <span class="op">=</span> pd.read_csv(url)</span>
+<span id="cb23-7"><a href="how-to-tidy-data.html#cb23-7" aria-hidden="true" tabindex="-1"></a>msleep.info()</span></code></pre></div>
 <pre><code>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
 RangeIndex: 83 entries, 0 to 82
 Data columns (total 11 columns):
@@ -301,7 +312,7 @@ Data columns (total 11 columns):
 dtypes: float64(6), object(5)
 memory usage: 7.3+ KB</code></pre>
 <p>Another method to get a glimpse of your data is <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.head.html"><code>head</code></a> which returns the first few rows of the data frame.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="how-to-tidy-data.html#cb9-1" aria-hidden="true" tabindex="-1"></a>msleep.head()</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb25-1"><a href="how-to-tidy-data.html#cb25-1" aria-hidden="true" tabindex="-1"></a>msleep.head()</span></code></pre></div>
 <table>
 <colgroup>
 <col width="2%" />
@@ -414,8 +425,8 @@ memory usage: 7.3+ KB</code></pre>
 <div id="filtering-rows" class="section level3" number="8.2.1">
 <h3><span class="header-section-number">8.2.1</span> Filtering Rows</h3>
 <p>If you were only interested in learning more about the sleep times of <code>Primates</code>, we could filter this dataset to include only data about those mammals that are also Primates. As we can see from <code>head</code>, this information is contained within the <code>order</code> variable. Using <code>pandas</code>, we filter the data as follows.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="how-to-tidy-data.html#cb10-1" aria-hidden="true" tabindex="-1"></a>primates <span class="op">=</span> msleep[msleep.order <span class="op">==</span> <span class="st">&quot;Primates&quot;</span>]</span>
-<span id="cb10-2"><a href="how-to-tidy-data.html#cb10-2" aria-hidden="true" tabindex="-1"></a>primates.head()</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb26-1"><a href="how-to-tidy-data.html#cb26-1" aria-hidden="true" tabindex="-1"></a>primates <span class="op">=</span> msleep[msleep.order <span class="op">==</span> <span class="st">&quot;Primates&quot;</span>]</span>
+<span id="cb26-2"><a href="how-to-tidy-data.html#cb26-2" aria-hidden="true" tabindex="-1"></a>primates.head()</span></code></pre></div>
 <table>
 <colgroup>
 <col width="2%" />
@@ -523,8 +534,8 @@ memory usage: 7.3+ KB</code></pre>
 <p>Note that we are using the equality <code>==</code> comparison operator that you learned about in the previous course rather than the assignment operator <code>=</code>. This is an important distinction. So what’s happening here? Remember than indexing an object with <code>[...]</code> selects some of its items. Here, we select all items that satisfy the condition that <code>order</code> is <code>Primates</code>.</p>
 <p>We now have a smaller dataset of only 12 mammals (as opposed to the original 83) and we can see that the <code>order</code> variable column only includes <code>Primates</code>.</p>
 <p>But, what if we were only interested in Primates who sleep more than 10 hours total per night? This information is in the <code>sleep_total</code> column. To accomplish this, you would use the following syntax, combining the two conditions using the <code>&amp;</code> operator. This operator is the logical <code>AND</code>. In other words, both <code>order == "Primates"</code> <em>and</em> <code>sleep_total &gt; 10</code> need to be satisfied for the animal to be included.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="how-to-tidy-data.html#cb11-1" aria-hidden="true" tabindex="-1"></a>sleepy_primates <span class="op">=</span> msleep[(msleep.order <span class="op">==</span> <span class="st">&quot;Primates&quot;</span>) <span class="op">&amp;</span> (msleep.sleep_total <span class="op">&gt;</span> <span class="dv">10</span>)]</span>
-<span id="cb11-2"><a href="how-to-tidy-data.html#cb11-2" aria-hidden="true" tabindex="-1"></a>sleepy_primates</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb27-1"><a href="how-to-tidy-data.html#cb27-1" aria-hidden="true" tabindex="-1"></a>sleepy_primates <span class="op">=</span> msleep[(msleep.order <span class="op">==</span> <span class="st">&quot;Primates&quot;</span>) <span class="op">&amp;</span> (msleep.sleep_total <span class="op">&gt;</span> <span class="dv">10</span>)]</span>
+<span id="cb27-2"><a href="how-to-tidy-data.html#cb27-2" aria-hidden="true" tabindex="-1"></a>sleepy_primates</span></code></pre></div>
 <table style="width:100%;">
 <colgroup>
 <col width="2%" />
@@ -631,8 +642,8 @@ memory usage: 7.3+ KB</code></pre>
 </table>
 <p>Now, we have a dataset focused in on only 5 mammals, all of which are primates who sleep for more than 10 hours a night total. The number of columns hasn’t changed. All 11 variables are still shown in columns because the function <code>filter()</code> filters on rows, not columns.</p>
 <p>If you wanted to select animals that are primates <em>or</em> sleep more than ten hours, you’d use the <code>|</code> operator to combine the two conditions like so.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="how-to-tidy-data.html#cb12-1" aria-hidden="true" tabindex="-1"></a>sleepy_or_primates <span class="op">=</span> msleep[(msleep.order <span class="op">==</span> <span class="st">&quot;Primates&quot;</span>) <span class="op">|</span> (msleep.sleep_total <span class="op">&gt;</span> <span class="dv">10</span>)]</span>
-<span id="cb12-2"><a href="how-to-tidy-data.html#cb12-2" aria-hidden="true" tabindex="-1"></a>sleepy_or_primates.head()</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb28-1"><a href="how-to-tidy-data.html#cb28-1" aria-hidden="true" tabindex="-1"></a>sleepy_or_primates <span class="op">=</span> msleep[(msleep.order <span class="op">==</span> <span class="st">&quot;Primates&quot;</span>) <span class="op">|</span> (msleep.sleep_total <span class="op">&gt;</span> <span class="dv">10</span>)]</span>
+<span id="cb28-2"><a href="how-to-tidy-data.html#cb28-2" aria-hidden="true" tabindex="-1"></a>sleepy_or_primates.head()</span></code></pre></div>
 <table>
 <colgroup>
 <col width="2%" />
@@ -742,8 +753,8 @@ memory usage: 7.3+ KB</code></pre>
 <h3><span class="header-section-number">8.2.2</span> Selecting Columns</h3>
 <p>While indexing with <code>[...]</code> typically operates on rows, it can also filter your dataset to only include the columns you’re interested in. To select columns so that your dataset only includes variables you’re interested in, you simply index the data frame with a list of column names.</p>
 <p>Let’s start with the code we just wrote to only include primates who sleep a lot. What if we only want to include the first column (the name of the mammal) and the sleep information (included in the columns <code>sleep_total</code>, <code>sleep_rem</code>, and <code>sleep_cycle</code>)?</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="how-to-tidy-data.html#cb13-1" aria-hidden="true" tabindex="-1"></a>subset <span class="op">=</span> sleepy_primates[[<span class="st">&quot;name&quot;</span>, <span class="st">&quot;sleep_total&quot;</span>, <span class="st">&quot;sleep_rem&quot;</span>, <span class="st">&quot;sleep_cycle&quot;</span>]]</span>
-<span id="cb13-2"><a href="how-to-tidy-data.html#cb13-2" aria-hidden="true" tabindex="-1"></a>subset.head()</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb29-1"><a href="how-to-tidy-data.html#cb29-1" aria-hidden="true" tabindex="-1"></a>subset <span class="op">=</span> sleepy_primates[[<span class="st">&quot;name&quot;</span>, <span class="st">&quot;sleep_total&quot;</span>, <span class="st">&quot;sleep_rem&quot;</span>, <span class="st">&quot;sleep_cycle&quot;</span>]]</span>
+<span id="cb29-2"><a href="how-to-tidy-data.html#cb29-2" aria-hidden="true" tabindex="-1"></a>subset.head()</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -797,7 +808,7 @@ memory usage: 7.3+ KB</code></pre>
 <div id="renaming-columns" class="section level3" number="8.2.3">
 <h3><span class="header-section-number">8.2.3</span> Renaming Columns</h3>
 <p>You can use the <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.rename.html"><code>rename</code></a> method to change column names. In the following example, we remove the <code>sleep_</code> from the beginning of column names.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="how-to-tidy-data.html#cb14-1" aria-hidden="true" tabindex="-1"></a>subset.rename({<span class="st">&quot;total&quot;</span>: <span class="st">&quot;sleep_total&quot;</span>, <span class="st">&quot;rem&quot;</span>: <span class="st">&quot;sleep_rem&quot;</span>, <span class="st">&quot;cycle&quot;</span>: <span class="st">&quot;sleep_cycle&quot;</span>})</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb30-1"><a href="how-to-tidy-data.html#cb30-1" aria-hidden="true" tabindex="-1"></a>subset.rename({<span class="st">&quot;total&quot;</span>: <span class="st">&quot;sleep_total&quot;</span>, <span class="st">&quot;rem&quot;</span>: <span class="st">&quot;sleep_rem&quot;</span>, <span class="st">&quot;cycle&quot;</span>: <span class="st">&quot;sleep_cycle&quot;</span>})</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -855,8 +866,8 @@ memory usage: 7.3+ KB</code></pre>
 <div id="reordering-columns" class="section level3" number="8.3.1">
 <h3><span class="header-section-number">8.3.1</span> Reordering Columns</h3>
 <p>Using our example from above, if you wanted <code>sleep_rem</code> to be the first sleep column and <code>sleep_total</code> to be the last column, all you have to do is reorder the column names in the list.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="how-to-tidy-data.html#cb15-1" aria-hidden="true" tabindex="-1"></a>reordered_columns <span class="op">=</span> sleepy_primates[[<span class="st">&quot;name&quot;</span>, <span class="st">&quot;sleep_rem&quot;</span>, <span class="st">&quot;sleep_cycle&quot;</span>, <span class="st">&quot;sleep_total&quot;</span>]]</span>
-<span id="cb15-2"><a href="how-to-tidy-data.html#cb15-2" aria-hidden="true" tabindex="-1"></a>reordered_columns.head()</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb31-1"><a href="how-to-tidy-data.html#cb31-1" aria-hidden="true" tabindex="-1"></a>reordered_columns <span class="op">=</span> sleepy_primates[[<span class="st">&quot;name&quot;</span>, <span class="st">&quot;sleep_rem&quot;</span>, <span class="st">&quot;sleep_cycle&quot;</span>, <span class="st">&quot;sleep_total&quot;</span>]]</span>
+<span id="cb31-2"><a href="how-to-tidy-data.html#cb31-2" aria-hidden="true" tabindex="-1"></a>reordered_columns.head()</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -910,7 +921,7 @@ memory usage: 7.3+ KB</code></pre>
 <div id="reordering-rows" class="section level3" number="8.3.2">
 <h3><span class="header-section-number">8.3.2</span> Reordering Rows</h3>
 <p>Rows can also be reordered. To reorder a variable in ascending order (from smallest to largest), you’ll want to use the <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sort_values.html"><code>sort_values</code></a> method. Continuing on from our example above, to now sort our rows by the amount of total sleep each mammal gets, we would use the following syntax.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="how-to-tidy-data.html#cb16-1" aria-hidden="true" tabindex="-1"></a>reordered_columns.sort_values(<span class="st">&quot;sleep_total&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb32-1"><a href="how-to-tidy-data.html#cb32-1" aria-hidden="true" tabindex="-1"></a>reordered_columns.sort_values(<span class="st">&quot;sleep_total&quot;</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -960,7 +971,7 @@ memory usage: 7.3+ KB</code></pre>
 </tbody>
 </table>
 <p>To instead sort the data in descending (largest to smallest) order, simply pass the argument <code>ascending=False</code> to the <code>sort_values</code> method like so.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="how-to-tidy-data.html#cb17-1" aria-hidden="true" tabindex="-1"></a>reordered_columns.sort_values(<span class="st">&quot;sleep_total&quot;</span>, ascending<span class="op">=</span><span class="va">False</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb33-1"><a href="how-to-tidy-data.html#cb33-1" aria-hidden="true" tabindex="-1"></a>reordered_columns.sort_values(<span class="st">&quot;sleep_total&quot;</span>, ascending<span class="op">=</span><span class="va">False</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -1010,7 +1021,7 @@ memory usage: 7.3+ KB</code></pre>
 </tbody>
 </table>
 <p><code>sort_values</code> can also be used to order non-numeric variables. For example, <code>sort_values</code> will sort character vectors alphabetically.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="how-to-tidy-data.html#cb18-1" aria-hidden="true" tabindex="-1"></a>reordered_columns.sort_values(<span class="st">&quot;name&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb34-1"><a href="how-to-tidy-data.html#cb34-1" aria-hidden="true" tabindex="-1"></a>reordered_columns.sort_values(<span class="st">&quot;name&quot;</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -1060,7 +1071,7 @@ memory usage: 7.3+ KB</code></pre>
 </tbody>
 </table>
 <p>If you would like to reorder rows based on information in multiple columns, you can specify them as a list of column names. This is useful if you have repeated labels in one column and want to sort within a category based on information in another column. In the example here, if there were repeated primates, this would sort the repeats based on their total sleep.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="how-to-tidy-data.html#cb19-1" aria-hidden="true" tabindex="-1"></a>reordered_columns.sort_values([<span class="st">&quot;name&quot;</span>, <span class="st">&quot;sleep_total&quot;</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb35-1"><a href="how-to-tidy-data.html#cb35-1" aria-hidden="true" tabindex="-1"></a>reordered_columns.sort_values([<span class="st">&quot;name&quot;</span>, <span class="st">&quot;sleep_total&quot;</span>])</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -1115,8 +1126,8 @@ memory usage: 7.3+ KB</code></pre>
 <h2><span class="header-section-number">8.4</span> Creating new columns</h2>
 <p>You will often find when working with data that you need an additional column. For example, if you had two datasets you wanted to combine, you may want to make a new column in each dataset called <code>dataset</code>. In one dataset you may put <code>datasetA</code> in each row. In the second dataset, you could put <code>datasetB</code>. This way, once you combined the data, you would be able to keep track of which dataset each row came from originally. More often, however, you’ll likely want to create a new column that calculates a new variable based on information in a column you already have. For example, in our mammal sleep dataset, <code>sleep_total</code> is in hours. What if you wanted to have that information in minutes? You could create a new column with this very information!</p>
 <p>Returning to our <code>msleep</code> dataset, after filtering and re-ordering, we can create a new column. We will calculate the number of minutes each mammal sleeps by multiplying the number of hours each animal sleeps by 60 minutes. A new column can be created by indexing the data frame with a column name and assigning to it.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="how-to-tidy-data.html#cb20-1" aria-hidden="true" tabindex="-1"></a>reordered_columns[<span class="st">&quot;sleep_total_min&quot;</span>] <span class="op">=</span> reordered_columns.sleep_total <span class="op">*</span> <span class="dv">60</span></span>
-<span id="cb20-2"><a href="how-to-tidy-data.html#cb20-2" aria-hidden="true" tabindex="-1"></a>reordered_columns</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb36-1"><a href="how-to-tidy-data.html#cb36-1" aria-hidden="true" tabindex="-1"></a>reordered_columns[<span class="st">&quot;sleep_total_min&quot;</span>] <span class="op">=</span> reordered_columns.sleep_total <span class="op">*</span> <span class="dv">60</span></span>
+<span id="cb36-2"><a href="how-to-tidy-data.html#cb36-2" aria-hidden="true" tabindex="-1"></a>reordered_columns</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -1176,12 +1187,12 @@ memory usage: 7.3+ KB</code></pre>
 <div id="separating-columns" class="section level2" number="8.5">
 <h2><span class="header-section-number">8.5</span> Separating Columns</h2>
 <p>Sometimes multiple pieces of information are merged within a single column even though it would be more useful during analysis to have those pieces of information in separate columns. To demonstrate, we’ll now move from the <code>msleep</code> dataset to talking about another dataset <a href="https://raw.githubusercontent.com/suzanbaert/Dplyr_Tutorials/master/conservation_explanation.csv"><code>conservation_explanation.csv</code></a> that includes information about conservation abbreviations in a single column.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="how-to-tidy-data.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Download and read the data.</span></span>
-<span id="cb21-2"><a href="how-to-tidy-data.html#cb21-2" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">&quot;https://raw.githubusercontent.com/suzanbaert/Dplyr_Tutorials/master/conservation_explanation.csv&quot;</span></span>
-<span id="cb21-3"><a href="how-to-tidy-data.html#cb21-3" aria-hidden="true" tabindex="-1"></a>conservation <span class="op">=</span> pd.read_csv(url)</span>
-<span id="cb21-4"><a href="how-to-tidy-data.html#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-5"><a href="how-to-tidy-data.html#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect the first few rows.</span></span>
-<span id="cb21-6"><a href="how-to-tidy-data.html#cb21-6" aria-hidden="true" tabindex="-1"></a>conservation.head()</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb37-1"><a href="how-to-tidy-data.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Download and read the data.</span></span>
+<span id="cb37-2"><a href="how-to-tidy-data.html#cb37-2" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">&quot;https://raw.githubusercontent.com/suzanbaert/Dplyr_Tutorials/master/conservation_explanation.csv&quot;</span></span>
+<span id="cb37-3"><a href="how-to-tidy-data.html#cb37-3" aria-hidden="true" tabindex="-1"></a>conservation <span class="op">=</span> pd.read_csv(url)</span>
+<span id="cb37-4"><a href="how-to-tidy-data.html#cb37-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-5"><a href="how-to-tidy-data.html#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect the first few rows.</span></span>
+<span id="cb37-6"><a href="how-to-tidy-data.html#cb37-6" aria-hidden="true" tabindex="-1"></a>conservation.head()</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -1213,8 +1224,8 @@ memory usage: 7.3+ KB</code></pre>
 </tbody>
 </table>
 <p>In this dataset, we see that there is a single column that includes <em>both</em> the abbreviation for the conservation term as well as what that abbreviation means. Recall that this violates one of the tidy data principles covered in the first lesson: Put just one thing in a cell. To work with these data, you could imagine that you may want these two pieces of information (the abbreviation and the description) in two different columns. We’ll use the <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.str.split.html"><code>str.split</code></a> method of the column to separate the abbreviation and description.</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="how-to-tidy-data.html#cb22-1" aria-hidden="true" tabindex="-1"></a>separated <span class="op">=</span> conservation[<span class="st">&quot;conservation abbreviation&quot;</span>].<span class="bu">str</span>.split(<span class="st">&quot; = &quot;</span>, expand<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb22-2"><a href="how-to-tidy-data.html#cb22-2" aria-hidden="true" tabindex="-1"></a>separated.head()</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb38-1"><a href="how-to-tidy-data.html#cb38-1" aria-hidden="true" tabindex="-1"></a>separated <span class="op">=</span> conservation[<span class="st">&quot;conservation abbreviation&quot;</span>].<span class="bu">str</span>.split(<span class="st">&quot; = &quot;</span>, expand<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb38-2"><a href="how-to-tidy-data.html#cb38-2" aria-hidden="true" tabindex="-1"></a>separated.head()</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -1253,8 +1264,8 @@ memory usage: 7.3+ KB</code></pre>
 </table>
 <p>We selected the column using indexing notation <code>[...]</code> instead of simply writing <code>conservation.conservation abbreviation</code> because the column name contains a space. This is another violation of tidy data! Variable names should have underscores, not spaces! The <code>str.split</code> method requires the characters that currently separate the pieces of information <code>=</code> as its first argument. Setting <code>expand=True</code> tells <code>str.split</code> to expand the results of splitting into separate columns. You’ll learn more about working with strings in a <a href="05-working-with-strings.md">later section</a>.</p>
 <p>However, the separated data frame does not have sensible column names. We can fix that by explicitly setting the column names.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb23-1"><a href="how-to-tidy-data.html#cb23-1" aria-hidden="true" tabindex="-1"></a>separated.columns <span class="op">=</span> [<span class="st">&quot;abbreviation&quot;</span>, <span class="st">&quot;conservation&quot;</span>]</span>
-<span id="cb23-2"><a href="how-to-tidy-data.html#cb23-2" aria-hidden="true" tabindex="-1"></a>separated.head()</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb39-1"><a href="how-to-tidy-data.html#cb39-1" aria-hidden="true" tabindex="-1"></a>separated.columns <span class="op">=</span> [<span class="st">&quot;abbreviation&quot;</span>, <span class="st">&quot;conservation&quot;</span>]</span>
+<span id="cb39-2"><a href="how-to-tidy-data.html#cb39-2" aria-hidden="true" tabindex="-1"></a>separated.head()</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -1295,8 +1306,8 @@ memory usage: 7.3+ KB</code></pre>
 <div id="merging-columns" class="section level2" number="8.6">
 <h2><span class="header-section-number">8.6</span> Merging Columns</h2>
 <p>The opposite of <code>split</code> is to concatenate values from different columns which you can achieve using the <code>+</code> operator. Using the code forming the two separate columns above, we can add on an extra line of code to re-join these separate columns, returning what we started with.</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="how-to-tidy-data.html#cb24-1" aria-hidden="true" tabindex="-1"></a>separated[<span class="st">&quot;conservation_abbreviation&quot;</span>] <span class="op">=</span> separated.abbreviation <span class="op">+</span> <span class="st">&quot; = &quot;</span> <span class="op">+</span> separated.conservation</span>
-<span id="cb24-2"><a href="how-to-tidy-data.html#cb24-2" aria-hidden="true" tabindex="-1"></a>separated.head()</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb40-1"><a href="how-to-tidy-data.html#cb40-1" aria-hidden="true" tabindex="-1"></a>separated[<span class="st">&quot;conservation_abbreviation&quot;</span>] <span class="op">=</span> separated.abbreviation <span class="op">+</span> <span class="st">&quot; = &quot;</span> <span class="op">+</span> separated.conservation</span>
+<span id="cb40-2"><a href="how-to-tidy-data.html#cb40-2" aria-hidden="true" tabindex="-1"></a>separated.head()</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -1340,18 +1351,18 @@ memory usage: 7.3+ KB</code></pre>
 </tbody>
 </table>
 <p>Because one of the principles of tidy data is to only ever have one thing in each column, you’ll rarely use concatenation in practice.</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb25-1"><a href="how-to-tidy-data.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(_.to_markdown())</span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb41-1"><a href="how-to-tidy-data.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(_.to_markdown())</span></code></pre></div>
 </div>
 <div id="combining-data-across-data-frames" class="section level2" number="8.7">
 <h2><span class="header-section-number">8.7</span> Combining data across data frames</h2>
 <p>There is often information stored in two separate data frames that you’ll want in a single data frame. There are <em>many</em> different ways to join separate data frames. They are discussed in more detail in <a href="https://pandas.pydata.org/docs/user_guide/merging.html">this tutorial</a>. Here, we’ll demonstrate how to use the <a href="https://pandas.pydata.org/docs/reference/api/pandas.merge.html"><code>merge</code></a> function to perform a “left join”, as this is used frequently.</p>
 <p>Let’s try to combine the information from the two different datasets we’ve used in this lesson. We have <code>msleep</code> and <code>separated</code>. <code>msleep</code> contains a column called <code>conservation</code>. This column includes lowercase abbreviations that overlap with the uppercase abbreviations in the <code>abbreviation</code> column in the <code>separated</code> dataset. To handle the fact that in one dataset the abbreviations are lowercase and the other they are uppercase, we’ll use <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.str.upper.html"><code>str.upper</code></a> to take all the lowercase abbreviations to uppercase abbreviations.</p>
 <p>We’ll then use <code>merge</code> to perform a left join which takes all of the rows in the first dataset <code>msleep</code> and incorporates information from the second dataset <code>separated</code> if information in the second dataset is available. The <code>left_on</code> and <code>right_on</code> arguments specify the columns to use in the <code>left</code> (<code>msleep</code>) and <code>right</code> datasets (<code>separated</code>) to merge or join the two datasets. Setting <code>how="left"</code> tells <code>merge</code> to perform a <code>left</code> join. This means if there is no information in the <code>right</code> dataset, the result will have <code>NA</code> where data are not available. Specifically, for rows where conservation is “DOMESTICATED” below, the <code>description</code> column will have NA because “DOMESTICATED”” is not an abbreviation in the <code>conserve</code> dataset.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb26-1"><a href="how-to-tidy-data.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert conservation abbreviation to upper case.</span></span>
-<span id="cb26-2"><a href="how-to-tidy-data.html#cb26-2" aria-hidden="true" tabindex="-1"></a>msleep.conservation <span class="op">=</span> msleep.conservation.<span class="bu">str</span>.upper()</span>
-<span id="cb26-3"><a href="how-to-tidy-data.html#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Merge the data.</span></span>
-<span id="cb26-4"><a href="how-to-tidy-data.html#cb26-4" aria-hidden="true" tabindex="-1"></a>merged <span class="op">=</span> pd.merge(msleep, separated, left_on<span class="op">=</span><span class="st">&quot;conservation&quot;</span>, right_on<span class="op">=</span><span class="st">&quot;abbreviation&quot;</span>, how<span class="op">=</span><span class="st">&quot;left&quot;</span>)</span>
-<span id="cb26-5"><a href="how-to-tidy-data.html#cb26-5" aria-hidden="true" tabindex="-1"></a>merged.head()</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb42-1"><a href="how-to-tidy-data.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert conservation abbreviation to upper case.</span></span>
+<span id="cb42-2"><a href="how-to-tidy-data.html#cb42-2" aria-hidden="true" tabindex="-1"></a>msleep.conservation <span class="op">=</span> msleep.conservation.<span class="bu">str</span>.upper()</span>
+<span id="cb42-3"><a href="how-to-tidy-data.html#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Merge the data.</span></span>
+<span id="cb42-4"><a href="how-to-tidy-data.html#cb42-4" aria-hidden="true" tabindex="-1"></a>merged <span class="op">=</span> pd.merge(msleep, separated, left_on<span class="op">=</span><span class="st">&quot;conservation&quot;</span>, right_on<span class="op">=</span><span class="st">&quot;abbreviation&quot;</span>, how<span class="op">=</span><span class="st">&quot;left&quot;</span>)</span>
+<span id="cb42-5"><a href="how-to-tidy-data.html#cb42-5" aria-hidden="true" tabindex="-1"></a>merged.head()</span></code></pre></div>
 <table>
 <colgroup>
 <col width="1%" />
@@ -1484,7 +1495,7 @@ memory usage: 7.3+ KB</code></pre>
 <div id="describe" class="section level3" number="8.8.1">
 <h3><span class="header-section-number">8.8.1</span> <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html"><code>describe</code></a></h3>
 <p>The <code>describe</code> method is similar to <code>info</code>. But instead of telling you about the <em>type</em> of data in the data frame, it provides summary statistics for columns containing numbers.</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb27-1"><a href="how-to-tidy-data.html#cb27-1" aria-hidden="true" tabindex="-1"></a>msleep.describe()</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb43-1"><a href="how-to-tidy-data.html#cb43-1" aria-hidden="true" tabindex="-1"></a>msleep.describe()</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -1573,7 +1584,7 @@ memory usage: 7.3+ KB</code></pre>
 </tbody>
 </table>
 <p>If you want to learn about non-numeric data, pass <code>include="object"</code> to the describe method.</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb28-1"><a href="how-to-tidy-data.html#cb28-1" aria-hidden="true" tabindex="-1"></a>msleep.describe(include<span class="op">=</span><span class="st">&quot;object&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb44-1"><a href="how-to-tidy-data.html#cb44-1" aria-hidden="true" tabindex="-1"></a>msleep.describe(include<span class="op">=</span><span class="st">&quot;object&quot;</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -1622,7 +1633,7 @@ memory usage: 7.3+ KB</code></pre>
 </table>
 <p>The output will tell you about the number of non-null values (<code>count</code>), the number of unique values (<code>unique</code>), the most frequent value (<code>top</code>), and the number of times the most frequent value appeared in the dataset (<code>freq</code>). If there is a tie between the most frequent values, a random value will be returned (<code>Cheetah</code> in this case for the <code>name</code> column).</p>
 <p>If you are interested in the frequency of values in a particular column, you can use <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.value_counts.html"><code>value_counts</code></a> to learn more.</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb29-1"><a href="how-to-tidy-data.html#cb29-1" aria-hidden="true" tabindex="-1"></a>msleep.order.value_counts()</span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb45-1"><a href="how-to-tidy-data.html#cb45-1" aria-hidden="true" tabindex="-1"></a>msleep.order.value_counts()</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -1718,11 +1729,11 @@ memory usage: 7.3+ KB</code></pre>
 <div id="groupby" class="section level3" number="8.9.1">
 <h3><span class="header-section-number">8.9.1</span> <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.groupby.html"><code>groupby</code></a></h3>
 <p><code>group_by</code> groups a dataset by one or more variables.</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb30-1"><a href="how-to-tidy-data.html#cb30-1" aria-hidden="true" tabindex="-1"></a>groups <span class="op">=</span> msleep.groupby(<span class="st">&quot;order&quot;</span>)</span>
-<span id="cb30-2"><a href="how-to-tidy-data.html#cb30-2" aria-hidden="true" tabindex="-1"></a>groups</span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb46-1"><a href="how-to-tidy-data.html#cb46-1" aria-hidden="true" tabindex="-1"></a>groups <span class="op">=</span> msleep.groupby(<span class="st">&quot;order&quot;</span>)</span>
+<span id="cb46-2"><a href="how-to-tidy-data.html#cb46-2" aria-hidden="true" tabindex="-1"></a>groups</span></code></pre></div>
 <pre><code>&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x1356e1600&gt;</code></pre>
 <p>This doesn’t seem very useful at first sight, but we can extract information about the different groups using further methods.</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb32-1"><a href="how-to-tidy-data.html#cb32-1" aria-hidden="true" tabindex="-1"></a>groups.order.count()</span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb48-1"><a href="how-to-tidy-data.html#cb48-1" aria-hidden="true" tabindex="-1"></a>groups.order.count()</span></code></pre></div>
 <pre><code>order
 Afrosoricida        1
 Artiodactyla        6
@@ -1745,7 +1756,7 @@ Scandentia          1
 Soricomorpha        5
 Name: order, dtype: int64</code></pre>
 <p>This code counts the number of non-null values in the <code>order</code> column within each group. The results may differ slightly if you use a different column. For example, there are quite a few values missing in the <code>sleep_cycle</code> column.</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb34-1"><a href="how-to-tidy-data.html#cb34-1" aria-hidden="true" tabindex="-1"></a>groups.sleep_cycle.count()</span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb50-1"><a href="how-to-tidy-data.html#cb50-1" aria-hidden="true" tabindex="-1"></a>groups.sleep_cycle.count()</span></code></pre></div>
 <pre><code>order
 Afrosoricida       0
 Artiodactyla       2
@@ -1768,7 +1779,7 @@ Scandentia         1
 Soricomorpha       4
 Name: sleep_cycle, dtype: int64</code></pre>
 <p>There are other ways in which the data can be summarized using <code>groupby</code>. In addition to using to <code>count</code> the number of samples within a group, you can also summarize using other helpful functions, such as <code>mean</code>, <code>median</code>, <code>min</code>, or <code>max</code>. For example, if we wanted to calculate the average (mean) total sleep each order of mammal got, we could use the following code.</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb36-1"><a href="how-to-tidy-data.html#cb36-1" aria-hidden="true" tabindex="-1"></a>groups.sleep_total.mean()</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb52-1"><a href="how-to-tidy-data.html#cb52-1" aria-hidden="true" tabindex="-1"></a>groups.sleep_total.mean()</span></code></pre></div>
 <pre><code>order
 Afrosoricida       15.600000
 Artiodactyla        4.516667
