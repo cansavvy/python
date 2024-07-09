@@ -10,7 +10,20 @@ curriculum
 set-up
 learning-objectives
 intro-to-python
+main-differences-between-r-and-python
 learning-objectives-1
+python-syntax-for-r-users
+whitespace
+data-structures
+lists
+tuples
+dictionaries
+sets
+iteration-with-for-loops
+functions
+importing-modules
+learning-more
+references
 getting-data
 learning-objectives-2
 cleaning-data
@@ -50,4 +63,4 @@ scripting-in-python
 learning-objectives-6
 getting-the-most-out-of-python
 learning-objectives-7
-references
+references-1
