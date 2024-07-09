@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | DataTrail - Python</title>
+  <title>Chapter 1 Demo Chapter | DataTrail - Python</title>
   <meta name="description" content="Description about Course/Book." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | DataTrail - Python" />
+  <meta property="og:title" content="Chapter 1 Demo Chapter | DataTrail - Python" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | DataTrail - Python" />
+  <meta name="twitter:title" content="Chapter 1 Demo Chapter | DataTrail - Python" />
   
   <meta name="twitter:description" content="Description about Course/Book." />
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   <link rel="shortcut icon" href="assets/DataTrail_favicon.ico" type="image/x-icon" />
-
-
+<link rel="prev" href="index.html"/>
+<link rel="next" href="introduction.html"/>
 <script src="libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -261,11 +261,43 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div class="hero-image-container"> 
   <img class= "hero-image" src="assets/DataTrail.jpg">
 </div>
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="demo-chapter" class="section level1" number="1">
+<h1><span class="header-section-number">Chapter 1</span> Demo Chapter</h1>
+<p>Here’s some code that’ll run in a notebook and also run in CI.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="demo-chapter.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Hello world&quot;</span>)</span></code></pre></div>
+<div id="how-to-use-the-setup" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> How to Use the Setup</h2>
+<p>You can write chapters for the course using standard markdown files in a variety of ways. Here are a few approaches that we’ve found useful. Before getting started, you need to set up a Python environment and install the Python requirements. Once you have Python set up, run <code>pip install -r requirements.txt</code> from the root directory to install all the requirements.</p>
+<p>If you want to use the interactive approach described below, you’ll also need to run <code>jupyter server extension enable jupytext</code> to enable <a href="https://jupytext.readthedocs.io/en/latest/index.html">jupytext</a>.</p>
+<div id="the-bare-bones-approach" class="section level3" number="1.1.1">
+<h3><span class="header-section-number">1.1.1</span> The Bare-Bones Approach</h3>
+<ol style="list-style-type: decimal">
+<li>Use a text editor of your choice to modify the markdown. Any fenced code block starting with the <code>python</code> language identifier will be executed when you convert the markdown to html.</li>
+<li>Run <code>make [your markdown document].ipynb.html</code> from the command line to execute the notebook and convert it to html.</li>
+</ol>
+</div>
+<div id="the-interactive-approach" class="section level3" number="1.1.2">
+<h3><span class="header-section-number">1.1.2</span> The Interactive Approach</h3>
+<p>Recompiling the document with <code>make</code> every time you make a small change can be cumbersome. You can get an interactive environment using Jupyter Lab.</p>
+<ol style="list-style-type: decimal">
+<li>Run <code>jupyter lab</code> from the command line to start a new Jupyter Lab server.</li>
+<li>Once the server has loaded (it can take a few seconds), right-click on the markdown file you want to modify, hover your mouse over “Open With”, and select “Notebook”. If you don’t see the “Notebook” option, shut down the server, execute <code>jupyter server extension enable jupytext</code>, then restart the server.</li>
+<li>Make any changes in the notebook. You can execute code interactively. Hit save, and the markdown document will be updated.</li>
+<li>Once your happy with the document, make sure to run <code>make [your markdown document].ipynb.html</code> from the command line to verify your changes work as expected.</li>
+</ol>
+</div>
+<div id="adding-google-slide-images" class="section level3" number="1.1.3">
+<h3><span class="header-section-number">1.1.3</span> Adding Google Slide Images</h3>
+<p>To add an image from a Google Slide deck, use the following markdown syntax.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb2-1"><a href="demo-chapter.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="al">![alternative if the image is broken](https://docs.google.com/presentation/d/&lt;presentation identifier&gt;/export/png?pageid=&lt;slide identifier without the .id prefix&gt;)</span></span></code></pre></div>
+<p>Here is an example.</p>
+<div class="figure">
+<img src="https://docs.google.com/presentation/d/114QYFmKuJ2M5E3tlBw8Gwu2xI09tb8gnrKrNkMY9CG4/export/png?pageid=g145cde68be4_0_70" alt="" />
+<p class="caption">Data Science Process</p>
+</div>
+
+</div>
+</div>
 </div>
 <hr>
 <center> 
@@ -280,8 +312,8 @@ the table of contents to find the page you are looking for.</p>
           </div>
         </div>
       </div>
-
-
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="introduction.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
